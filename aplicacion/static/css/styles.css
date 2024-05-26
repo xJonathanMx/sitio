@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Estilos para el navbar*/
+.navbar {
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.abajo{
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li{
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+
+}
+.navbar .nav-links ul li a:hover{
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a{
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a{
+    color: black;
+}
+
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+ 
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(0deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)),
+    url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+#hero h1{
+    color: #fff;
+    font-size: 7rem;
+    font-weight: bold;
+}
+
+.btn-ver-carta{
+    font-size: 2rem;
+    border: 1px solid #fff;
+    padding: 20px 35px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.btn-ver-carta:hover {
+    color: black;
+    background-color: #fff;
+    transition: all 0.5s ease;
+}
+
+
+
+/* informacion quienes somos*/
+
+#informacion{
+    background-color: #d9d9d9;
+    width: 100wv;
+}
+
+#informacion .contenedor {
+    display: flex;
+    padding: 100px;
+    max-width: 1400px;
+    padding-top: 250px;
+}
+
+.texto {
+    padding: 40px 50px;
+    color: black;
+    text-align: initial;
+    font-size: 1.5rem;
+}
+
+.texto .titulo{
+    padding-bottom: 35px;
+}
+
+#informacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+
+
+#informacion .contenedor .img-container {
+    background-image: url(../img/quienes\ somos.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 500px;
+    width: 600px;
+    padding: 0 190px;
+    border-radius: 10px;
+}
+
+
+
+/* Promos populares*/
+
+#promos-populares .titulo{
+    display: flex;
+    justify-content: center;
+    padding: 200px 0 70px 0;
+    font-size: 50px;
+}
+
+
+/* Estilos carrito de compras*/
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding: 50px;
+}
+
+.contenedor-todo{
+    display: flex;
+    padding: 7px;
+}
+
+.contenedor-carrito{
+    width: 1600px;
+    height: 98vh;
+    border-radius: 10px;
+    margin-right: 7px;
+
+}
+
+.contenedor-datos{
+    height: 98vh;
+    width: 300px;
+    background-color: #ed3c57;
+    border-radius: 10px;
+    
+}
+
+
+
+@media screen and (max-width : 900px) {
+
+    /* Estilos para el navbar para celular*/
+    .navbar{
+        padding: 0;
+        z-index: 10;
+        
+    }
+    nav.abajo .menu-hamburgesa,
+    nav.abajo .logo{
+        top: 18px;
+    }
+
+
+    .navbar .logo{
+        position: absolute;
+        top: 50px;
+        left: 50px;
+
+    }
+
+    .navbar  .menu-hamburgesa {
+        display: block;
+        top: 50px;
+        filter: invert(1); 
+        
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.299);
+        backdrop-filter: blur(17px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .navbar .nav-links ul li{
+        margin: 25px 0;
+        font-size: 1.5em;
+    }
+
+    .btn-contacto {
+        font-size: 1rem;
+        border: 1px solid #fff;
+        padding: 20px 35px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .titulo-principal {
+
+        font-size: 2.5rem;
+        color: #fff;
+        padding-bottom: 80px;
+        font-weight: bold;
+    }
+    
+    
+
+    .abajo{
+        background-color: #fff;
+        padding: 30px 40px;
+        transition: all 0.5s ease;
+    }
+    .abajo .menu-hamburgesa{
+        filter: none;
+    }
+
+
+
+    
+    
+
+
+    #informacion .contenedor {
+        padding-top: 250px;
+        padding: 240px 0;
+    }
+
+    .titulo {
+        padding-bottom: 30px;
+        text-align: center;
+    }
+    
+    .texto {
+        padding: 40px 50px;
+        color: black;
+        text-align: initial;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    
+    #informacion {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    #informacion .contenedor .img-container {
+        display: none;
+    }
+}

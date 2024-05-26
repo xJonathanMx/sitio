@@ -1,0 +1,323 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Estilos para el navbar*/
+.navbar {
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.abajo{
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li{
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a{
+    color: black;
+    text-decoration: none;
+
+}
+.navbar .nav-links ul li a:hover{
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a{
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a{
+    color: black;
+}
+
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding: 80px 50px 50px 50px;
+}
+
+.contenedor-todo{
+    display: flex;
+    padding: 7px;
+}
+
+.contenedor-carrito{
+    width: 1600px;
+    border-radius: 10px;
+    margin-right: 7px;
+
+}
+
+.contenedor-datos{
+    width: 300px;
+    border-radius: 10px;
+    
+}
+
+.datos-personales{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.opciones-retiro{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.delivery{
+    background-color: #fff;
+    text-align: center;
+    width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.retirar{
+    background-color: #fff;
+    text-align: center;
+    width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    
+}
+
+.botones{
+    display: flex;
+    justify-content:flex-end;
+    padding-top: 90px;
+}
+
+.botones a{
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.botones a:hover{
+    background-color: #aeadad;
+    transition: all 0.5s ease;
+}
+
+.total-compra{
+    text-align: right;
+    padding: 40px;
+}
+
+.contenedor-datos-delivery{
+    margin: 20px 0 0 0;
+    padding: 5px;
+    opacity: 0; 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease, opacity 1s ease;
+}
+
+.contenedor-delivery-active{
+    opacity: 1; 
+    max-height: 500px; 
+
+}
+
+/* FORMULARIO DELIVERY*/
+
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+
+
+
+
+
+@media screen and (max-width : 900px) {
+
+    
+    /* Estilos para el navbar para celular*/
+    .navbar{
+        padding: 0;
+        z-index: 10;
+        
+    }
+    .contenedor-carrito{
+        width: auto;
+    }
+    
+    nav.abajo .menu-hamburgesa,
+    nav.abajo .logo{
+        top: 18px;
+    }
+
+
+    .navbar .logo{
+        position: absolute;
+        top: 50px;
+        left: 50px;
+
+    }
+
+    .navbar  .menu-hamburgesa {
+        display: block;
+        top: 50px;
+        
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.299);
+        backdrop-filter: blur(17px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .navbar .nav-links ul li{
+        margin: 25px 0;
+        font-size: 1.5em;
+    }
+    
+    .abajo{
+        background-color: #fff;
+        padding: 30px 40px;
+        transition: all 0.5s ease;
+    }
+
+    .contenedor-todo{
+        display: block;
+        overflow-x: hidden;
+    }
+
+    .titulo h1{
+        font-size: 2rem;
+        margin-top:50px;
+    }
+
+    .total-compra{
+        text-align: left;
+        padding: 40px;
+    }
+    
+
+    .contenedor-datos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .opciones-retiro {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .delivery{
+        margin-bottom: 20px;
+    }
+
+}

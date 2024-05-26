@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    
+}
+
+
+
+.navbar {
+
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 10000;
+}
+
+.abajo {
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #020202;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a {
+    color: #000000;
+    text-decoration: none;
+
+
+}
+
+.navbar .nav-links ul li a:hover {
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a {
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a {
+    color: black;
+}
+
+
+
+#detalle .contenedor {
+    display: flex;
+    padding: 100px;
+    max-width: 1400px;
+    padding-top: 200px;
+}
+
+.texto {
+    padding: 40px 50px;
+    color: black;
+    text-align: initial;
+    font-size: 1.5rem;
+}
+
+.texto .titulo{
+    padding-bottom: 35px;
+    font-size: 50px;
+}
+
+
+#detalle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center ;
+    border-radius: 20px;
+    width: 1200px;
+    height: 580px;
+    margin:   0 auto ;
+    padding-bottom: 100px;  
+    padding-top: 200px;  
+}
+
+
+
+
+#detalle .contenedor .img-container {
+    background-image: url(../img/cryspipollo.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+    width: 700px;
+    padding: 150px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.btnes {
+    padding-left: 100px;
+    margin-left: 30px;
+    display: flex;
+
+}
+.btnes a{
+    text-decoration: none;
+    font-size: 20px;
+    background-color: grey;
+    border-radius: 10px ;
+    margin: 10px;
+}
+
+.container_form{
+    
+    height: 50%;
+    align-items: center;
+    display: flex;
+    width: 100%;
+
+}
+.cuerpo_form{
+    margin-top: 20px;
+    margin-left: 350px;
+    height: 600px;
+    width: 800px;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    justify-content: center;
+    padding-left: 14%;
+
+}
+.cuerpo_form h1{
+    font-size: 30px;
+    width: 400px;
+    color: black;
+    padding-left: 50px;
+    padding-top: 30px;
+    border-bottom: 5px  solid rgb(0, 0, 0);
+    display: flex;
+    
+}
+
+.Datos{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    background-color: gray;
+    border-radius: 10px;
+    color: black;
+    height: 500px;
+    width: 390px;
+    margin: 0;
+    
+}
+ .Portada{
+    
+    border: 1px solid blue;
+    width: 200px;
+    height: 150px;
+    order: 2;  
+ }
+ .imagen{
+    height: auto;
+    width: 150px;
+ }
+
+.Datos input{
+background-color: transparent;
+border-top: transparent;
+border-left: transparent;
+border-right: transparent;
+
+border-bottom:1px solid white;
+height: 30px;
+
+}
+.btnes_form
+{
+    display: flex;
+
+    height: auto;
+    padding-top: 20px;
+    justify-content: center;
+ 
+}
+.btnes_form a{
+    background-color: white;
+    margin: 10px;
+    
+}
+
+@media screen and (max-width : 900px) {
+
+    /* Estilos para el navbar para celular*/
+    .navbar{
+        padding: 0;
+        z-index: 10;
+        
+        
+    }
+    nav.abajo .menu-hamburgesa,
+    nav.abajo .logo{
+        top: 18px;
+    }
+
+
+    .navbar .logo{
+        position: absolute;
+        top: 50px;
+        left: 20px;
+
+    }
+
+    .navbar  .menu-hamburgesa {
+        display: block;
+        top: 50px;
+        filter: invert(1); 
+        
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.299);
+        backdrop-filter: blur(17px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .navbar .nav-links ul li{
+        margin: 25px 0;
+        font-size: 1.5em;
+    }
+
+    .btn-contacto {
+        font-size: 1rem;
+        border: 1px solid #fff;
+        padding: 20px 35px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .titulo-principal {
+
+        font-size: 2.5rem;
+        color: #fff;
+        padding-bottom: 80px;
+        font-weight: bold;
+    }
+    
+    
+
+    .abajo{
+        background-color: #fff;
+        padding: 30px 40px;
+        transition: all 0.5s ease;
+    }
+
+    .abajo .menu-hamburgesa{
+        filter: none;
+    }
+}

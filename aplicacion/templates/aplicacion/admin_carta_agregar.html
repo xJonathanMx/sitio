@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Admin</title>
+    <link rel="icon" href="../img/sushiincon.png" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/admin_carta.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="admin.html" class="logo">SushiDeuS Admin</a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="gestion_usuarios.html">Usuarios</a></li>
+                <li class="active"><a href="admin_carta_agregar.html">Carta</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+    </nav>
+
+
+    <div id="TituloCarta">
+        <h1 id="tica">Carta SushiDeuS</h1>
+        <p id="subca">Tus Mejores Sabores aqui</p>
+    </div>
+    <section>
+        <div class="informe_cartas">
+           
+            <div class="container">
+                    <!-- Button trigger modal -->
+            <button
+            type="button"
+            class="btn btn-primary m-4 mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop1"
+          >+ Agregar producto</button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop1"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    Complete los campos
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form action="/action_page.php" class="was-validated">
+                    <div class="mb-3">
+                      <label for="imagen" class="form-label">Imagen</label>
+                      <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Subir imagen
+                      </label>
+                      <input type="file" id="file-upload" name="imagen" accept="image/*" required>
+                      <div class="invalid-feedback">Seleccione una imagen</div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <label for="nameproducto" class="form-label">Nombre producto</label>
+                      <input type="text" class="form-control" id="nameproducto" placeholder="Ingrese nombre producto" name="nameproducto" minlength="2" required >
+                      <div class="invalid-feedback">Campo obligatorio</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="Descripcion" class="form-label">Descripcion</label>
+                      <textarea type="text" class="form-control" id="Descripcion" placeholder="Ingrese descripcion" name="nameproducto" required></textarea>
+                      <div class="invalid-feedback">Campo obligatorio</div>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                      <label for="precio" class="form-label">Precio</label>
+                      <input type="number" class="form-control" id="precio" placeholder="Ingrese precio" name="precio" min="0" required>
+                      <div class="invalid-feedback">Campo obligatorio</div>
+                    </div>
+  
+                    
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Agregar</button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </form>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+<!--FIN MODAL-->
+
+<!--Tabla de productos-->
+          
+  <div class="Container mb-5">
+    <h1>Productos</h1>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12</td>
+                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td>SushiBurger</td>
+                    <td>$20000</td>
+                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td>SushiBurger</td>
+                    <td>$20000</td>
+                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td>SushiBurger</td>
+                    <td>$20000</td>
+                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td>SushiBurger</td>
+                    <td>$20000</td>
+                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+                
+            <!-- Modal EDICION DE PRODUCTO-->
+          <div
+          class="modal fade"
+          id="edicion"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                  Editar producto
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="#">
+                    <div class="form-group">
+                      <label for="direccion">Nombre producto</label>
+                      <input type="text" id="direccion" name="direccion" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="referencia">Descripcion</label>
+                      <textarea id="referencia" name="referencia" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="direccion">Precio</label>
+                      <input type="text" id="direccion" name="direccion" required />
+                    </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Guardar
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--FIN MODAL-->
+
+    </section>
+
+
+    </div>
+
+    <script src="../js/carta.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

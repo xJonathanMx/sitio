@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+/* Estilos para el navbar*/
+.navbar {
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 12;
+
+}
+
+
+.abajo {
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.navbar .nav-links ul li a:hover {
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a {
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a {
+    color: black;
+}
+
+
+
+.TitAdmin{
+    background-color: black;
+    height: 90%;
+    padding-top: 150px;
+    border-end-end-radius: 30px;
+    border-bottom-left-radius:  30px;
+}
+#titcoman{
+    border-left: 10px solid white ;
+    border-top: 10px solid white;
+    width: 200px;
+    margin-left: 70px;
+    color: white;
+
+}
+
+.card-body p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+     
+}
+.card-body h1{
+    font-size: 25px;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom:2px solid black;
+}
+#subti{
+font-size: 20px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btnes_com{
+    margin-top: 10px;
+    background-color: black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+.btn{
+    color: white;
+}
+.ajustes{
+    width: 400px;
+    height: 0px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    align-items: center;
+    padding-left: 1400px;
+    
+}
+.ajustes a{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 10px;
+}
+@media screen and (max-width : 900px) {
+
+    /* Estilos para el navbar para celular*/
+    .navbar{
+        padding: 0;
+        z-index: 10;
+        
+    }
+    nav.abajo .menu-hamburgesa,
+    nav.abajo .logo{
+        top: 18px;
+    }
+
+
+    .navbar .logo{
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        font-size: 25px;
+
+    }
+
+    .navbar  .menu-hamburgesa {
+        display: block;
+        top: 50px;
+        filter: invert(1); 
+        
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.299);
+        backdrop-filter: blur(17px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .navbar .nav-links ul li{
+        margin: 25px 0;
+        font-size: 1.5em;
+    }
+
+    .btn-contacto {
+        font-size: 1rem;
+        border: 1px solid #fff;
+        padding: 20px 35px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .titulo-principal {
+
+        font-size: 2.5rem;
+        color: #fff;
+        padding-bottom: 80px;
+        font-weight: bold;
+    }
+    
+    
+
+    .abajo{
+        background-color: #fff;
+        padding: 30px 40px;
+        transition: all 0.5s ease;
+    }
+
+    .abajo .menu-hamburgesa{
+        filter: none;
+    }
+    .text-end {
+        justify-content: center;
+       
+    }
+    .navbar p{
+        padding-left: 220px;
+        padding-top: 50px;
+    }
+    #titcoman{
+        margin-left: 10px;
+        margin-bottom: 50px
+    }
+    .ajustes{
+        
+        padding-left: 500px;
+        height: 0px;
+       width: 100px;
+        
+    }
+    #titcoman{
+        width: 150px;
+        font-size: 20px;
+         border-left: 5px solid white;
+         border-top: 5px solid white;
+    }
+    .ajustes a{
+        font-size: 10px;
+    }
+    .TitAdmin{
+        height: 100%;
+    }
+    .btnes_com{
+        background-color: white;
+    }
+    .btnes_com a{
+        color: black;
+        border:3px solid black;
+        margin: 10px;
+        border-radius: 15px;
+    }
+
+}

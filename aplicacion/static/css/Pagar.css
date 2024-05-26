@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: black;
+}
+
+
+
+/* Estilos para el navbar*/
+.navbar {
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 12;
+
+}
+
+
+.abajo {
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.navbar .nav-links ul li a:hover {
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a {
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a {
+    color: black;
+}
+
+.Container{
+
+    padding-top: 100px;
+    text-align: center;
+}
+.title{
+   color: white;
+}
+
+@media screen and (max-width : 900px) {
+
+    /* Estilos para el navbar para celular*/
+    .navbar{
+        padding: 0;
+        z-index: 10;
+        
+    }
+    nav.abajo .menu-hamburgesa,
+    nav.abajo .logo{
+        top: 18px;
+    }
+
+
+    .navbar .logo{
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        font-size: 25px;
+
+    }
+
+    .navbar  .menu-hamburgesa {
+        display: block;
+        top: 50px;
+        filter: invert(1); 
+        
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.299);
+        backdrop-filter: blur(17px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .navbar .nav-links ul li{
+        margin: 25px 0;
+        font-size: 1.5em;
+    }
+}

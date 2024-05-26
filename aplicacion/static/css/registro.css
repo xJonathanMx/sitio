@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: black;
+}
+
+/* Estilos para el navbar*/
+.navbar {
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 12;
+}
+
+.abajo {
+    background-color: #fff;
+    padding: 15px 40px;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .menu-hamburgesa {
+    position: absolute;
+    right: 50px;
+    width: 35px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+
+.navbar .nav-links ul {
+    display: flex;
+    font-size: 20px;
+
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+
+}
+
+.navbar .nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.navbar .nav-links ul li a:hover {
+    color: #ed3c57;
+
+}
+
+.navbar .nav-links ul li.active a {
+    color: #ed3c57;
+    font-weight: 600;
+
+}
+
+nav.abajo .logo,
+nav.abajo .nav-links ul li a {
+    color: black;
+}
+.Fondo_login{
+    width: 500px;
+    height: 600px;
+    margin:0 auto;
+    padding-top: 110px;
+}
+
+ 
+    .Login{
+    background-color: white;
+      border-radius: 20px;
+      height: 600px;
+      width: 450px;
+      border: 4px solid grey;
+    }
+  
+    .cuerpo_login{
+        font-size: 18px;
+        color: black;
+        border-top: 4px solid black;
+        border-bottom: 4px solid black;
+        width: 300px;
+        margin:  0 auto  ;
+    }
+    .cuerpo_login input{
+        border-radius: 10px;
+        border: 2px solid black;
+        font-size: 20px;
+    }
+    .Fondo_login .container{
+       
+        text-align: center;
+    }
+    .btnes{
+        margin: 20px auto ;
+        background-color: grey;
+        border-radius: 15px;
+    }
+
+    @media screen and (max-width : 900px) {
+
+        /* Estilos para el navbar para celular*/
+        .navbar{
+            padding: 0;
+            z-index: 10;
+            
+        }
+        nav.abajo .menu-hamburgesa,
+        nav.abajo .logo{
+            top: 18px;
+        }
+    
+    
+        .navbar .logo{
+            position: absolute;
+            top: 50px;
+            left: 100px;
+    
+        }
+    
+        .navbar  .menu-hamburgesa {
+            display: block;
+            top: 50px;
+            left: 380px;
+            filter: invert(1); 
+            
+        }
+    
+        .nav-links {
+            top: 0;
+            left: 0;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.299);
+            backdrop-filter: blur(17px);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: -100%;
+            transition: all 0.5s ease;
+        }
+    
+        .nav-links.mobile-menu {
+            margin-left: 0;
+        }
+    
+        .nav-links ul {
+            display: flex;
+            flex-direction: column;
+            
+        }
+    
+        .navbar .nav-links ul li{
+            margin: 25px 0;
+            font-size: 1.5em;
+        }
+    
+        .btn-contacto {
+            font-size: 1rem;
+            border: 1px solid #fff;
+            padding: 20px 35px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+    
+        .titulo-principal {
+    
+            font-size: 2.5rem;
+            color: #fff;
+            padding-bottom: 80px;
+            font-weight: bold;
+        }
+        
+        
+    
+        .abajo{
+            background-color: #fff;
+            padding: 30px 40px;
+            transition: all 0.5s ease;
+        }
+    
+        .abajo .menu-hamburgesa{
+            filter: none;
+        }
+        .Login{
+            width: 300px;
+            margin:0 auto ;
+        }
+        .btnes{
+            width: 200px;
+        }
+        .cuerpo_login{
+            
+            width: 200px;
+        }
+        .cuerpo_login input{
+            width: 200px;
+        }
+    }

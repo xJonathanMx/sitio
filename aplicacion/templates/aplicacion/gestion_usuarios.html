@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gestion usuarios</title>
+  <link rel="icon" href="../img/sushiincon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/estiloNavvar.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="admin.html" class="logo">SushiDeuS Admin</a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="gestion_usuarios.html">Usuarios</a></li>
+        <li><a href="admin_carta_agregar.html">Carta</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+    <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+  </nav>
+
+  <div class="container mt-5">
+    <h2 class="p-5">Gestion de usuarios</h2>
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Telefono</th>
+          <th>Direccion</th>
+          <th>Operacion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button data-bs-toggle="modal" data-bs-target="#modal_user" type="button" class="btn btn-primary me-2"><i
+                class="bi bi-bag-check"></i></button>
+            <button type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button>
+          </td>
+          <div>
+            <div class="modal fade" id="modal_user">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Editar Usuario</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form action="/action_page.php" class="was-validated">
+                      <div class="mb-3">
+                        <label for="" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" value="Seba"  placeholder="Nombre Usuario">
+                        <div>
+                          <label for="" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" name=""Apellido id="" value="Morales" placeholder="Apellido Usuario">
+                        </div>
+                        <div>
+                          <label for="" class="form-label">Telefono</label>
+                          <input type="text" class="form-control" value="912345678" placeholder="Telefono Usuario">
+                        </div>
+                        <div>
+                          <label for="" class="form-label">Direccion</label>
+                          <input  type="text" name="" id="" class="form-control" value="Por allá 123" placeholder="Direccion Usuario">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>seba</td>
+          <td>Morales</td>
+          <td>912345678</td>
+          <td>Su casa 123</td>
+          <td><button type="button" class="btn btn-primary me-2"><i class="bi bi-bag-check"></i></button><button
+              type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="../js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

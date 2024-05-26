@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+    <link rel="icon" href="../img/sushiincon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/tabla_pedido.css">
+
+</head>
+
+<body style="background-color: rgba(255, 255, 255, 0.7); ">
+    <nav class="navbar">
+        <a href="admin.html" class="logo">SushiDeuS Admin</a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="admin.html"">Admin</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+    </nav>
+    <div class="Container">
+        <h1>Pedidos</h1>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Contacto</th>
+                        <th>Direccion</th>
+                        <th>Estado</th>
+                        <th><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-boxes" viewBox="0 0 16 16">
+                                <path
+                                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z" />
+                            </svg> Operacion Estado </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12</td>
+                        <td>SushiBurger</td>
+                        <td>2</td>
+                        <td>948677366</td>
+                        <td>Carabineros 123</td>
+                        <td>
+                            <div class="Estado_env">Enviado</div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Pendiente</a>
+                                        <a class="dropdown-item" href="#">Enviado</a>
+                                        <a class="dropdown-item" href="#">Entregado</a>
+                                        <a class="dropdown-item" href="#">Cancelado</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>cryspi pollo</td>
+                        <td>6</td>
+                        <td>91223121</td>
+                        <td>Duoc Uc</td>
+                        <td><div class=Estado_Pend>Pendiente</div></td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Pendiente</a>
+                                        <a class="dropdown-item" href="#">Enviado</a>
+                                        <a class="dropdown-item" href="#">Entregado</a>
+                                        <a class="dropdown-item" href="#">Cancelado</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Sushi Pleto</td>
+                        <td>3</td>
+                        <td>912345678</td>
+                        <td>Por el Norte 12</td>
+                        <td><div class="Estado_Cance">Cancelado</div></td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Pendiente</a>
+                                        <a class="dropdown-item" href="#">Enviado</a>
+                                        <a class="dropdown-item" href="#">Entregado</a>
+                                        <a class="dropdown-item" href="#">Cancelado</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>SushiPerron</td>
+                        <td>10</td>
+                        <td>123456789</td>
+                        <td>Por el Centro 456</td>
+                        <td><div class="Estado_Entr">Entregado</div></td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Pendiente</a>
+                                        <a class="dropdown-item" href="#">Enviado</a>
+                                        <a class="dropdown-item" href="#">Entregado</a>
+                                        <a class="dropdown-item" href="#">Cancelado</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    <script src="../js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
