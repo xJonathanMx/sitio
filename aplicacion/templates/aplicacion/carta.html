@@ -18,12 +18,12 @@
         <a href="index.html" class="logo">SushiDeuS</a>
         <div class="nav-links">
             <ul>
-                <li><a href="index.html"">Inicio</a></li>
-                <li><a href="index.html">Nosotros</a></li>
-                <li class="active" ><a href="carta.html">Carta</a></li>
-                <li><a href="{% url "pedidos" %}">Mis Pedidos</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="login.html">Login</a></li>
+            <li ><a href="{% url "index" %}">Inicio</a></li>
+              <li><a href="{% url "index" %}">Nosotros</a></li>
+              <li class="active" ><a href="{% url "carta"%}">Carta</a></li>
+              <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
+              <li><a href="{% url "carrito" %}">Carrito</a></li>
+              <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
         <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
@@ -48,8 +48,8 @@
                                     elección.
                                 </p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a> 
                                 </div>
                             </div>
                         </div>
@@ -61,8 +61,8 @@
                                 <h5 class="card-title">Nombre sushi</h5>
                                 <p class="card-text">Contenido del sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                              </div>
                             </div>
                         </div>
@@ -74,8 +74,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                              </div>
                             </div>
 
@@ -88,8 +88,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                                 </div>
                             </div>
 
@@ -102,8 +102,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                                 </div>
                             </div>
 
@@ -116,8 +116,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                                     
                                 </div>
                             </div>
@@ -131,8 +131,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                                 </div>
                             </div>
 
@@ -145,8 +145,8 @@
                                 <h5 class="card-title">Nombre Sushi</h5>
                                 <p class="card-text">Contenido Sushi</p>
                                 <div class="text-end">
-                                    <a href="detalle.html" class="btn btn">Detalle</a>
-                                    <a href="carrito.html" class="btn btn">Agregar</a>
+                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
+                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
                                 </div>
                             </div>
 

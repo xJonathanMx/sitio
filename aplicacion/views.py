@@ -25,3 +25,6 @@ def carrito(request):
     return render(request,'aplicacion/carrito.html')
 def admin(request):
     return render(request,'aplicacion/admin.html')
+
+def detalle(request):
+    return render(request,'aplicacion/detalle.html')

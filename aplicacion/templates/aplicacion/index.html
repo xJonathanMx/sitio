@@ -17,8 +17,8 @@
         <a href="index.html" class="logo">SushiDeuS</a>
         <div class="nav-links">
             <ul>
-              <li class="active"><a href="index.html">Inicio</a></li>
-              <li><a href="index.html">Nosotros</a></li>
+              <li class="active"><a href="{% url "index" %}">Inicio</a></li>
+              <li><a href="{% url "index" %}">Nosotros</a></li>
               <li><a href="{% url "carta"%}">Carta</a></li>
               <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
               <li><a href="{% url "carrito" %}">Carrito</a></li>
@@ -30,7 +30,7 @@
 
     <div id="hero">
         <h1>Sushi DeuS</h1>
-        <a href="carta.html" class="btn-ver-carta">Ver carta ya!</a>
+        <a href="{% url "carta" %}" class="btn-ver-carta">Ver carta ya!</a>
     </div>
 
     <section id="informacion">
@@ -61,7 +61,7 @@
                     <h5 class="card-title">Título de la Tarjeta 1</h5>
                     <p class="card-text">Contenido de la Tarjeta 1.</p>
                     <div class="text-end">
-                      <a href="carrito.html" class="btn btn-primary">Agregar</a>
+                      <a href="{% url "carrito"%}" class="btn btn-primary">Agregar</a>
                     </div>
                   </div>
                 </div>
@@ -73,7 +73,7 @@
                     <h5 class="card-title">Título de la Tarjeta 2</h5>
                     <p class="card-text">Contenido de la Tarjeta 2.</p>
                     <div class="text-end">
-                      <a href="carrito.html" class="btn btn-primary">Agregar</a>
+                      <a href="{% url "carrito" %}" class="btn btn-primary">Agregar</a>
                     </div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                     <h5 class="card-title">Título de la Tarjeta 3</h5>
                     <p class="card-text">Contenido de la Tarjeta 3.</p>
                     <div class="text-end">
-                      <a href="carrito.html" class="btn btn-primary">Agregar</a>
+                      <a href="{% url "carrito" %}" class="btn btn-primary">Agregar</a>
                     </div>
                   </div>
                 </div>
