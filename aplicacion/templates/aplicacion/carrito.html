@@ -67,6 +67,7 @@
           </table>
         </div>
 
+        
         <div class="total-compra">
           <h1>Total: $50000</h1>
         </div>
@@ -143,7 +144,15 @@
               </div>
             </div>
 
-            <button type="button" class="btn btn-primary m-1">retirar</button>
+            <button
+              type="button"
+              class="btn btn-primary m-1"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdropComentario"
+            >
+              Comentario
+            </button>
+
         </div>
 
         <div class="contenedor-datos-delivery">
@@ -151,6 +160,52 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Modal Comentario -->
+    <div
+    class="modal fade"
+    id="staticBackdropComentario"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            Agrege Comentario
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form action="#" class="was-validated">
+              <div class="form-group">
+                <label for="comentario">Comentario</label>
+                <textarea id="comentario" name="comentario" ></textarea>
+              </div>
+              <button type="submit">Guardar</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="botones">
       <a href="carta.html">Volver</a>
@@ -162,6 +217,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/index.js"></script>
+    <script src="{% static "../static/js/index.js" %}"></script>
   </body>
 </html>
