@@ -24,7 +24,11 @@ def tabla_pedidos(request):
 def carrito(request):
     return render(request,'aplicacion/carrito.html')
 def admin(request):
-    return render(request,'aplicacion/admin.html')
+    return render(request,'aplicacion/admin_usuario.html')
 
 def detalle(request):
     return render(request,'aplicacion/detalle.html')
+def gestion_usuario(request):
+    return render(request,'aplicacion/gestion_usuarios.html')
+def Carta_admin(request):
+    return render(request,'aplicacion/admin_carta_agregar.html')

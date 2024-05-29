@@ -9,7 +9,7 @@
     <link rel="icon" href="../img/sushiincon.png" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/admin_carta.css">
+    <link rel="stylesheet" href="{% static "../static/css/admin_carta.css" %}">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -18,13 +18,13 @@
         <a href="admin.html" class="logo">SushiDeuS Admin</a>
         <div class="nav-links">
             <ul>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="gestion_usuarios.html">Usuarios</a></li>
-                <li class="active"><a href="admin_carta_agregar.html">Carta</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{% url "admins" %}">Admin</a></li>
+                <li><a href="{% url "Usuarios" %}">Usuarios</a></li>
+                <li class="active"><a href="{% url "AdminCarta" %}">Carta</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
-        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+        <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
     </nav>
 
 
@@ -133,28 +133,28 @@
             <tbody>
                 <tr>
                     <td>12</td>
-                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
                     <td>SushiBurger</td>
                     <td>$20000</td>
                     <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
                 </tr>
                 <tr>
                     <td>12</td>
-                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
                     <td>SushiBurger</td>
                     <td>$20000</td>
                     <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
                 </tr>
                 <tr>
                     <td>12</td>
-                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
                     <td>SushiBurger</td>
                     <td>$20000</td>
                     <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
                 </tr>
                 <tr>
                     <td>12</td>
-                    <td><img src="../img/cryspipollo(1).jpg" alt="" class="img-tabla-producto"></td>
+                    <td><img src="{% static "../static/img/cryspipollo(1).jpg"%}" alt="" class="img-tabla-producto"></td>
                     <td>SushiBurger</td>
                     <td>$20000</td>
                     <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>

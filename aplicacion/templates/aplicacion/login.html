@@ -28,7 +28,7 @@
         <div class="container">
             <div class="Login">
                 <h1 style="margin-bottom: 60px;">Inicio Sesion</h1>
-                <form action="{% url "admin" %}" method="get">
+                <form action="{% url "admins" %}" method="get">
                     <div class="cuerpo_login">
                         <div class="mb-3">
                             <label class="form-label" for="correo">Correo Electronico</label>
@@ -43,7 +43,7 @@
                         <div class="mb-3">
                             <a  href="{% url "registro_usuario" %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
                             <br>
-                            <button type="submit" class="btn btn-primary btn rounded shadow text-light" id="submitBtn" disabled onclick="window.location.href = '{% url "admin" %}'; return false;">Iniciar sesion</button>
+                            <button type="submit" class="btn btn-primary btn rounded shadow text-light" id="submitBtn" disabled onclick="window.location.href = '{% url "admins" %}'; return false;">Iniciar sesion</button>
                         </div>
 
                     </div>
