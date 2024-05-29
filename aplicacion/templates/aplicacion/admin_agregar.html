@@ -14,13 +14,13 @@
 
 <body style="background-color: rgba(255, 255, 255, 0.7); ">
     <nav class="navbar">
-        <a href="admin.html" class="logo">SushiDeuS Admin</a>
+        <a href="{% url "admins" %}" class="logo">SushiDeuS Admin</a>
         <div class="nav-links">
             <ul>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="gestion_usuarios.html">Usuarios</a></li>
-                <li><a href="admin_carta.html">Carta</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{% url "admins" %}">Admin</a></li>
+                <li><a href="{% url "Usuarios" %}">Usuarios</a></li>
+                <li><a href="{% url "AdminCarta" %}">Carta</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
         <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
