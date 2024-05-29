@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagar</title>
-    <link rel="icon" href="../img/sushiincon.png">
+    <link rel="icon" href="{% static '../static/img/sushiincon.png' %}" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/Pagar.css">
+        <link rel="stylesheet" href="{% static '../static/css/Pagar.css' %}">
 </head>
 
 <body>
@@ -16,19 +17,21 @@
         <a href="index.html" class="logo">SushiDeuS</a>
         <div class="nav-links">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="carta.html">Carta</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{% url "index" %}">Inicio</a></li>
+                <li><a href="{% url "index" %}">Nosotros</a></li>
+                <li><a href="{% url "carta"%}">Carta</a></li>
+                <li><a href="{% url "pedidos" %}">Mis Pedidos</a></li>
+                <li class="active"><a href="{% url 'carrito' %}">Carrito</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
-        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+        <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
+
     </nav>
 <div class="Container">
     <div class="title">
         <h1>Pagar</h1>
-        <img src="../img/pagado.jpg" alt="">
+        <img src="{% static "../static/img/pagado.jpg" %}" alt="imagen">
     </div>
 </div>
 </body>

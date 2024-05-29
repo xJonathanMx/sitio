@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <link rel="icon" href="../img/sushiincon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="{% static "../static/css/admin.css" %}">
 </head>
 
 <body style="background-color: grey;">
@@ -16,15 +17,15 @@
         <a href="#" class="logo">SushiDeuS Admin</a>
         <div class="nav-links">
             <ul>    
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="tabla_pedidos.html">Pedidos</a></li>
-                <li><a href="gestion_usuarios.html">Usuarios</a></li>
-                <li><a href="admin_carta_agregar.html">Carta</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li class="active"><a href="{% url "admins" %}">Admin</a></li>
+                <li><a href="{% url "tabla_pedidos" %}">Pedidos</a></li>
+                <li><a href="{% url "Usuarios" %}">Usuarios</a></li>
+                <li><a href="{% url "AdminCarta" %}">Carta</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
 
-        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+        <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
     </nav>
 
     <div id="titulocomanda">
@@ -44,7 +45,7 @@
                 <div  class="row">
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -76,7 +77,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -108,7 +109,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1 >nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -124,7 +125,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -140,7 +141,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mb-3">
-                            <img src="../img/cryspipollo(1).jpg" alt="">
+                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
                             <div class="card-body">
                                 <h1>nombre</h1>
                                 <p id="subti">tipo:</p>
@@ -158,7 +159,7 @@
         </div>
     </section>
 
-    <script src="../js/carta.js"></script>
+    <script src="{% static "../static/js/carta.js" %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
