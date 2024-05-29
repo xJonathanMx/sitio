@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="icon" href="../img/sushiincon.png">
+    <link rel="icon" href="{% static '../static/img/sushiincon.png' %}" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="{% static "../static/css/login.css" %}">
 </head>
 
 <body id="body_login">
@@ -16,18 +17,18 @@
         <a href="index.html" class="logo">SushiDeuS</a>
         <div class="nav-links">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="{% url "index" %}">Inicio</a></li>
                 <li class="active"><a href="#">Login</a></li>
             </ul>
         </div>
-        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+        <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
     </nav>
 
     <div id="Fondo_login" class="border p-3 shadow">
         <div class="container">
             <div class="Login">
                 <h1 style="margin-bottom: 60px;">Inicio Sesion</h1>
-                <form action="login.html" method="get">
+                <form action="{% url "admin" %}" method="get">
                     <div class="cuerpo_login">
                         <div class="mb-3">
                             <label class="form-label" for="correo">Correo Electronico</label>
@@ -40,9 +41,9 @@
                             <div class="txt-danger" id="msjClave"></div>
                         </div>
                         <div class="mb-3">
-                            <a  href="registro-usuario.html" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
+                            <a  href="{% url "registro_usuario" %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
                             <br>
-                            <button type="submit" class="btn btn-primary btn rounded shadow text-light" id="submitBtn" disabled onclick="window.location.href = 'admin.html'; return false;">Iniciar sesion</button>
+                            <button type="submit" class="btn btn-primary btn rounded shadow text-light" id="submitBtn" disabled onclick="window.location.href = '{% url "admin" %}'; return false;">Iniciar sesion</button>
                         </div>
 
                     </div>
@@ -53,7 +54,7 @@
     </div>
     </div>
     </div>
-    <script src="../js/login.js"></script>
+    <script src="{% static "../static/js/login.js" %}"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +17,12 @@
         <a href="#" class="logo">SushiDeuS Admin</a>
         <div class="nav-links">
             <ul>    
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="tabla_pedidos.html">Pedidos</a></li>
-                <li><a href="gestion_usuarios.html">Usuarios</a></li>
-                <li><a href="admin_carta_agregar.html">Carta</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{% url "index" %}">Inicio</a></li>
+                <li><a href="{% url "index" %}">Nosotros</a></li>
+                <li><a href="{% url "carta"%}">Carta</a></li>
+                <li><a href="{% url "pedidos" %}">Mis Pedidos</a></li>
+                <li><a href="{% url 'carrito' %}">Carrito</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
 
