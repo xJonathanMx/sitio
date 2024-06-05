@@ -34,7 +34,7 @@ body {
 .navbar .logo {
     font-size: 2em;
     font-weight: bold;
-    color: #fff;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 .navbar .nav-links ul li a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
 
 }
@@ -84,18 +84,17 @@ nav.abajo .nav-links ul li a {
 
 
 .TitAdmin{
-    background-color: black;
     height: 90%;
     padding-top: 150px;
     border-end-end-radius: 30px;
     border-bottom-left-radius:  30px;
 }
 #titcoman{
-    border-left: 10px solid white ;
-    border-top: 10px solid white;
+    border-left: 10px solid rgb(0, 0, 0) ;
+    border-top: 10px solid rgb(0, 0, 0);
     width: 200px;
     margin-left: 70px;
-    color: white;
+    color: rgb(0, 0, 0);
 
 }
 
@@ -103,7 +102,6 @@ nav.abajo .nav-links ul li a {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 15px;
-     
 }
 .card-body h1{
     font-size: 25px;
@@ -128,6 +126,10 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 .btn{
     color: white;
 }
+
+.btn:hover{
+    color: rgb(180, 180, 180);
+}
 .ajustes{
     width: 400px;
     height: 0px;
@@ -145,7 +147,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 5px;
     border-radius: 10px;
 }
-@media screen and (max-width : 900px) {
+@media screen and (max-width : 1100px) {
 
     /* Estilos para el navbar para celular*/
     .navbar{
@@ -248,14 +250,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         
         padding-left: 500px;
         height: 0px;
-       width: 100px;
+        width: 100px;
         
     }
     #titcoman{
         width: 150px;
         font-size: 20px;
-         border-left: 5px solid white;
-         border-top: 5px solid white;
+        border-left: 5px solid white;
+        border-top: 5px solid white;
     }
     .ajustes a{
         font-size: 10px;

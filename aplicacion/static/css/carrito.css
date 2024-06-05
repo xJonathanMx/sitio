@@ -12,7 +12,6 @@ body{
 
 /* Estilos para el navbar*/
 .navbar {
-    position: fixed;
     padding: 30px;
     display: flex;
     justify-content: space-between;

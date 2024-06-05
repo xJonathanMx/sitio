@@ -14,11 +14,11 @@
 
 <body style="background-color: rgba(255, 255, 255, 0.7); ">
     <nav class="navbar">
-        <a href="index.html" class="logo">SushiDeuS</a>
+        <a href="{% url "index" %}" class="logo">SushiDeuS</a>
         <div class="nav-links">
             <ul>
-                <li ><a href="index.html">Inicio</a></li>
-                <li><a href="index.html">Nosotros</a></li>
+                <li ><a href="{% url "index" %}">Inicio</a></li>
+                <li><a href="{% url "index" %}">Nosotros</a></li>
                 <li class="active"><a href="{% url "carta"%}">Carta</a></li>
                 <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
                 <li><a href="{% url "carrito" %}">Carrito</a></li>
