@@ -1,7 +1,7 @@
 
 
 from django.urls import path,include
-from .views import index,carta,pedidos,pagar,carrito,tabla_pedidos,registro_usuario,login,admin,detalle,gestion_usuario,Carta_admin
+from .views import index,carta,pedidos,pagar,carrito,tabla_pedidos,registro_usuario,login,admin,detalle,gestion_usuario,Carta_admin, agregar_al_carrito, eliminar_del_carrito
 
 urlpatterns = [
     path('',index,name='index'),
@@ -15,5 +15,9 @@ urlpatterns = [
     path('admins/',admin,name='admins'),
     path('detalle/',detalle,name='detalle'),
     path('Usuarios/',gestion_usuario,name="Usuarios"),
-    path('CartaAdmin/',Carta_admin,name='AdminCarta')
+    path('CartaAdmin/',Carta_admin,name='AdminCarta'),
+    path('agregar_al_carrito/<int:id_producto>/', agregar_al_carrito, name='agregar_al_carrito'),
+    path('eliminar_del_carrito/<int:producto_id>/', eliminar_del_carrito, name='eliminar_del_carrito')
 ]
+
+
