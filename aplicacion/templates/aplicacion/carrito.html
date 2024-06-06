@@ -50,14 +50,15 @@
               </tr>
             </thead>
             <tbody>
-              {% for producto in productos_carrito %}
+              {% for item in productos_carrito %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ producto.nom_producto }}</td>
-                <td>{{ producto.cantidad }}</td>
-                <td>${{ producto.valor }}</td>
+                <td>{{ item.producto.nom_producto }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.producto.valor }}</td>
                 <td class="d-flex" >
-                  <form action="{% url 'eliminar_del_carrito' producto.id_producto %}" method="post" style="display: inline;">
+                  <form action="{% url 'eliminar_del_carrito' item.producto.id_producto %}" method="post" style="display: inline;">
+                    {% csrf_token %}
                     <button type="submit" class="btn btn-danger" style="width: 70px;">
                       <i class="bi bi-bag-dash"></i>
                     </button>
@@ -71,7 +72,7 @@
 
         
         <div class="total-compra">
-          <h1>Total: $50000</h1>
+          <h1>Total: ${{ total }}</h1>
         </div>
       </div>
 
