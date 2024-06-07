@@ -1,11 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Producto
+
 
 # Create your views here.
+
+
+
 def index(request):
-    return render(request,'aplicacion/index.html')
+            return render(request,'aplicacion/index.html')
 
 def carta(request):
-    return render(request,'aplicacion/carta.html')
+
+    products = Producto.objects.all()
+    return render(request,'aplicacion/carta.html', {'products':products})
 
 def pedidos(request):
     return render(request,'aplicacion/pedidos.html')
@@ -21,8 +29,66 @@ def login(request):
 def tabla_pedidos(request):
     return render(request,'aplicacion/tabla_pedidos.html')
 
+
+#funcionalidad carrito
+
+def agregar_al_carrito(request, id_producto):
+    carrito = request.session.get('carrito', [])
+
+    carrito = [item for item in carrito if isinstance(item, dict) and 'id_producto' in item]
+    producto_existente = next((item for item in carrito if item['id_producto'] == id_producto), None)
+
+    if producto_existente:
+        producto_existente['cantidad'] += 1
+    else:                                                                       
+        carrito.append({'id_producto': id_producto, 'cantidad': 1})
+
+    request.session['carrito'] = carrito
+    return redirect('carrito')
+
+
 def carrito(request):
-    return render(request,'aplicacion/carrito.html')
+    lista_productos_carrito = request.session.get('carrito', [])
+    productos = Producto.objects.filter(id_producto__in=[item['id_producto'] for item in lista_productos_carrito])
+    productos_carrito = []
+
+    for producto in productos:
+        for item in lista_productos_carrito:
+            if item['id_producto'] == producto.id_producto:
+                productos_carrito.append({
+                    'producto': producto,
+                    'cantidad': item['cantidad'],
+                    'subtotal': producto.valor * item['cantidad']
+                })
+                break
+
+    total = sum(item['subtotal'] for item in productos_carrito)
+
+    context = {
+        'productos_carrito': productos_carrito,
+        'total': total
+    }
+    return render(request, 'aplicacion/carrito.html', context)
+
+
+def eliminar_del_carrito(request, id_producto):
+    carrito = request.session.get('carrito', [])
+
+    carrito_copy = carrito.copy()
+
+    for item in carrito_copy:
+        if isinstance(item, dict) and item.get('id_producto') == id_producto:
+            if item['cantidad'] > 1:
+                item['cantidad'] -= 1
+            else:
+                carrito.remove(item)
+            break
+
+    request.session['carrito'] = carrito
+    return redirect('carrito')
+
+
+
 def admin(request):
     return render(request,'aplicacion/admin_usuario.html')
 
