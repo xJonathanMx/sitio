@@ -118,18 +118,11 @@ nav.abajo .nav-links ul li a {
 }
 
 
-
-
-#detalle .contenedor .img-container {
-    background-image: url(../img/cryspipollo.jpg);
-    background-size: cover;
-    background-position: center center;
-    height: 400px;
-    width: 700px;
-    padding: 150px;
-    border-radius: 10px;
-    margin-top: 50px;
+.card-img-top{
+    height: 100px;
 }
+
+
 
 .btnes {
     padding-left: 100px;

@@ -120,7 +120,7 @@ STATIC_URL = 'static/'
 
 import os
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'aplicacion/media/producto')
+MEDIA_ROOT=os.path.join(BASE_DIR,'aplicacion/media/')
 
 
 # Default primary key field type

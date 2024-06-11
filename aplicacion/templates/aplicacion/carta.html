@@ -44,13 +44,13 @@
                     {% for product in products %}
                     <div class="col-md-3">
                         <div class="card mb-3">
-                            <img src="{% static '../static/img/cryspipollo(1).jpg' %}" class="card-img-top" alt="Sushi cryspipollo">
+                            <img src="{{ product.imagen.url}}" class="card-img-top" alt="Sushi cryspipollo">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.nom_producto }}</h5>
                                 <p class="card-text">{{ product.descripcion }}</p>
                                 <div class="text-end">
-                                    <a href="{% url 'detalle' %}" class="btn btn">Detalle</a>
-                                    <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
+                                    <a href="{% url 'detalle' product.id_producto %}" class="btn btn">Detalle</a>
+                                        <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
                                 </div>
                             </div>
                         </div>
@@ -59,107 +59,7 @@
                 </div>
             </div>
 
-                    <!--
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img class="card-img-top" id="foto-waifu" alt="..." style="height: 300px;">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre sushi</h5>
-                                <p class="card-text">Contenido del sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                             </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                    
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-3">
-                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Nombre Sushi</h5>
-                                <p class="card-text">Contenido Sushi</p>
-                                <div class="text-end">
-                                    <a href="{% url "detalle" %}" class="btn btn">Detalle</a>
-                                    <a href="{% url "carrito" %}" class="btn btn">Agregar</a>
-                                </div>
-                            </div>
-
-                        </div>
-                
-                    </div>
-                    -->
                 </div>
             </div>
 

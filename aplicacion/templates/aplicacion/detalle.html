@@ -25,27 +25,23 @@
                 <li><a href="{% url "login" %}">Login</a></li>
             </ul>
         </div>
-        <img src="../img/btn hamburger.png" alt="menu hamburgesa" class="menu-hamburgesa">
+        <img src={% static "../static/img/btn hamburger.png" %} alt="menu hamburgesa" class="menu-hamburgesa">
     </nav>
 
     <div id="detalle">
-        <div class="contenedor">
-            <div class="img-container"></div>
-            <div class="texto">
-                <h2 class="titulo">Nombre Producto</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit doloremque
-                    libero odio sequi aperiam officiis, nisi harum eligendi. Officia dolor atque distinctio,
-                    est cum aliquid nisi inventore a vero omnis. Lorem ipsum, dolor sit amet consectetur adipisicing
-                    elit. Ipsam
-                    ducimus
-                    vero cupiditate minus vitae dicta iusto! Necessitatibus, id!
-                    Reprehenderit a earum recusandae nemo et laboriosam at vitae tempore, laborum veritatis.</p>
-                    <div class="btnes">
-                        <a href="{% url "carta" %}" class="btn">Volver</a>
-                        <a href="{% url "carrito" %}" class="btn"> Agregar</a>
-                    </div>
+        <div class="card">
+            <img class="card-img-top" src="{{producto.imagen.url}}" alt="{{producto.nom_producto}}" style="width: 300px; height: auto;" />
+            <div class="card-body">
+                <h4 class="card-title">{{producto.nom_producto}}</h4>
+                <p class="card-text">{{producto.descripcion}}</p>
+                <div>
+                <a href="{% url 'agregar_al_carrito' producto.id_producto %}" class="btn btn">Agregar</a>
+                <a href="{% url 'carta' %}" class="btn btn">volver</a>
+            </div>
+                </div>
             </div>
         </div>
+        
     </div>
 
     <script src="{% static "../static/js/carta.js" %}"></script>

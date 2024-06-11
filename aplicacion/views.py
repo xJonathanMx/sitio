@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Producto
+from django.shortcuts import get_object_or_404
+
 
 
 # Create your views here.
@@ -14,6 +16,13 @@ def carta(request):
 
     products = Producto.objects.all()
     return render(request,'aplicacion/carta.html', {'products':products})
+
+def detalle(request,id):
+    producto=get_object_or_404(Producto,id_producto=id)
+    datos={
+        "producto":producto
+    }
+    return render(request,'aplicacion/detalle.html',datos)  
 
 def pedidos(request):
     return render(request,'aplicacion/pedidos.html')
@@ -92,9 +101,16 @@ def eliminar_del_carrito(request, id_producto):
 def admin(request):
     return render(request,'aplicacion/admin_usuario.html')
 
-def detalle(request):
-    return render(request,'aplicacion/detalle.html')
+
+
 def gestion_usuario(request):
     return render(request,'aplicacion/gestion_usuarios.html')
+
 def Carta_admin(request):
-    return render(request,'aplicacion/admin_carta_agregar.html')
+    producto=Producto.objects.all()
+    
+    datos={
+        "producto":producto
+    }
+    
+    return render(request,'aplicacion/admin_carta_agregar.html',datos)

@@ -1,7 +1,9 @@
 
-from django.urls import path, include
-from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito
+from django.urls import path
 
+from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('', index, name='index'),
     path('carta/', carta, name='carta'),
@@ -12,11 +14,13 @@ urlpatterns = [
     path('registro/', registro_usuario, name='registro_usuario'),
     path('login/', login, name='login'),
     path('admins/', admin, name='admins'),
-    path('detalle/', detalle, name='detalle'),
+    path('detalle/<id>',detalle, name='detalle'),
     path('Usuarios/', gestion_usuario, name="Usuarios"),
     path('CartaAdmin/', Carta_admin, name='AdminCarta'),
     path('agregar_al_carrito/<int:id_producto>/', agregar_al_carrito, name='agregar_al_carrito'),
     path('eliminar_del_carrito/<int:id_producto>/', eliminar_del_carrito, name='eliminar_del_carrito')
     
 ]
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

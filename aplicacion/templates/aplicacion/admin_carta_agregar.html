@@ -131,34 +131,18 @@
                 </tr>
             </thead>
             <tbody>
+              {% for p in producto %}
                 <tr>
-                    <td>12</td>
-                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
-                    <td>SushiBurger</td>
-                    <td>$20000</td>
+                  
+                    <td>{{p.id_producto}}</td>
+                    <td><img src="{{ p.imagen.url }}" alt="" class="img-tabla-producto"></td>
+                    <td>{{p.nom_producto}}</td>
+                    <td>{{p.valor}}</td>
                     <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
-                    <td>SushiBurger</td>
-                    <td>$20000</td>
-                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td><img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="" class="img-tabla-producto"></td>
-                    <td>SushiBurger</td>
-                    <td>$20000</td>
-                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td><img src="{% static "../static/img/cryspipollo(1).jpg"%}" alt="" class="img-tabla-producto"></td>
-                    <td>SushiBurger</td>
-                    <td>$20000</td>
-                    <td><button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#edicion"><i class="bi bi-pencil-square"></i></button><button type="button" class="btn btn-danger mx-1"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
+                    
+                  </tr>
+                  {% endfor %}
+                
             </tbody>
         </table>
 
