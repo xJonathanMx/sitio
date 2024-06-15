@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 import os
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'aplicacion/media/producto')
+MEDIA_ROOT=os.path.join(BASE_DIR,'aplicacion/media/')
 
 
 # Default primary key field type
@@ -134,5 +134,3 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'aplicacion/media/producto')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'

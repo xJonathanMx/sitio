@@ -45,7 +45,7 @@ def registro_usuario(request):
 
 
 def login(request):
-    return render (request,'aplicacion/registration/login.html')
+    return render (request,'aplicacion/login.html')
 
 def tabla_pedidos(request):
     return render(request,'aplicacion/tabla_pedidos.html')

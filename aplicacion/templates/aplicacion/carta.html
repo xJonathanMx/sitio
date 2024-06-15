@@ -44,10 +44,10 @@
                     {% for product in products %}
                     <div class="col-md-3">
                         <div class="card mb-3">
-                            <img src="{% static '../static/img/cryspipollo(1).jpg' %}" class="card-img-top" alt="Sushi cryspipollo">
+                            <img src="{{ product.imagen.url }}" class="card-img-top" alt="{{ product.nom_producto }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.nom_producto }}</h5>
-                                <p class="card-text">{{ product.descripcion }}</p>
+                                <p class="card-text">$ {{ product.valor }}</p>
                                 <div class="text-end">
                                     <a href="{% url 'detalle' %}" class="btn btn">Detalle</a>
                                     <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
