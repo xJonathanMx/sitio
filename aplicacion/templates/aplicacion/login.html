@@ -28,28 +28,17 @@
         <div class="container">
             <div class="Login">
                 <h1 style="margin-bottom: 60px;">Inicio Sesion</h1>
-                <form action="{% url "admins" %}" method="get">
-                    <div class="cuerpo_login">
-                        <div class="mb-3">
-                            <label class="form-label" for="correo">Correo Electronico</label>
-                            <input class="form-control" type="email"  name="correo" id="idcorreo" placeholder="Ingrese su correo" onclick="validar()" required>
-                            <div class="txt-danger" id="msjCorreo"></div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="">Contraseña</label>
-                            <input class="form-control" type="password"  name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" onblur="validar()">
-                            <div class="txt-danger" id="msjClave"></div>
-                        </div>
-                        <div class="mb-3">
-                            <a  href="{% url "registro_usuario" %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
-                            <br>
-                            <button type="submit" class="btn btn-primary btn rounded shadow text-light" id="submitBtn" disabled onclick="window.location.href = '{% url "admins" %}'; return false;">Iniciar sesion</button>
-                        </div>
-
+                {% load crispy_forms_tags %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="mb-3">
+                        <a href="{% url 'registro_usuario' %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn rounded shadow text-light">Iniciar sesión</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
     </div>

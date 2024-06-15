@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Producto
 from django.shortcuts import get_object_or_404
+from .forms import RegistroUsuarioForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+
 
 
 
@@ -30,8 +34,24 @@ def pedidos(request):
 def pagar(request):
     return render(request,'aplicacion/pagar.html')
 
+
 def registro_usuario(request):
-    return render(request,'aplicacion/registro-usuario.html')
+    if request.method == 'POST':
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            try:
+                user = form.save(commit=False)
+                user.is_staff = False
+                user.is_superuser = False
+                user.save()
+                return redirect('index')
+            except IntegrityError:
+                form.add_error('correo', 'El correo electrónico ya está en uso.')
+    else:
+        form = RegistroUsuarioForm()
+    return render(request, 'aplicacion/registro-usuario.html', {'form': form})
+
+
 def login(request):
     return render (request,'aplicacion/login.html')
 
