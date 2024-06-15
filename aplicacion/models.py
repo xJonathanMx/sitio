@@ -11,9 +11,10 @@ class Comuna(models.Model):
 
 class Usuario(models.Model):
     rut = models.CharField(max_length=12, primary_key=True)
+    username = models.CharField(max_length=12, unique=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    correo = models.EmailField(max_length=100)
+    correo = models.EmailField(max_length=100, unique=True)
     contraseña = models.CharField(max_length=100)
     esadmin = models.BooleanField(default=False)
 

@@ -47,7 +47,7 @@
                             <img src="{{ product.imagen.url}}" class="card-img-top" alt="Sushi cryspipollo">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.nom_producto }}</h5>
-                                <p class="card-text">{{ product.descripcion }}</p>
+                                <p class="card-text">$ {{ product.valor }}</p>
                                 <div class="text-end">
                                     <a href="{% url 'detalle' product.id_producto %}" class="btn btn">Detalle</a>
                                         <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
