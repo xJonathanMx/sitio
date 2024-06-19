@@ -8,7 +8,16 @@ from itertools import cycle
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UsernameField
+from .models import Producto
 
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ("nom_producto", "descripcion", "valor", "imagen")
+class UProductoForm(forms.ModelForm):
+    class Meta:
+        model =Producto
+        fields= ("nom_producto", "descripcion", "valor", "imagen")
 
 
 class RegistroUsuarioForm(forms.ModelForm):
