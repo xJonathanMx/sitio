@@ -14,7 +14,7 @@ class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = ("nom_producto", "descripcion", "valor", "imagen")
-class UProductoForm(forms.ModelForm):
+class UpdProductoForm(forms.ModelForm):
     class Meta:
         model =Producto
         fields= ("nom_producto", "descripcion", "valor", "imagen")

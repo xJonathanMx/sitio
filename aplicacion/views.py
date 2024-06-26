@@ -1,8 +1,10 @@
+from os import remove, path
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Producto
 from django.shortcuts import get_object_or_404
-from .forms import ProductoForm, RegistroUsuarioForm, UProductoForm
+from .forms import ProductoForm, RegistroUsuarioForm, UpdProductoForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -23,12 +25,7 @@ def carta(request):
     products = Producto.objects.all()
     return render(request,'aplicacion/carta.html', {'products':products})
 
-def detalle(request,id):
-    producto=get_object_or_404(Producto,id_producto=id)
-    datos={
-        "producto":producto
-    }
-    return render(request,'aplicacion/detalle.html',datos)  
+
 
 def pedidos(request):
     return render(request,'aplicacion/pedidos.html')
@@ -155,28 +152,43 @@ def Agregar_Producto (request):
             return redirect('AdminCarta')
     return JsonResponse({'success': False, 'error': 'Solicitud inválida'})
 
-def Modificar_Producto (request,id_producto):
-    Producto=get_object_or_404(Producto,id=id_producto)
-    formU=UProductoForm(instance=Producto)
 
-    if formU.is_valid():
-        formU=UProductoForm(request.POST, files=request.FILES, instance=Producto)
-        formU.save()
-        messages.set_level(request,messages.WARNING)
-        messages.warning(request,"Producto Modificado")
-        return redirect('AdminCarta')
-    else:
-            messages.error(request,"Error al Modificar el Producto")
-            return redirect('AdminCarta')
-    
-def Eliminar_Producto (request,id):
+
+def admin_Carta_M (request,id):
+    producto=get_object_or_404(Producto,id_producto=id)
+    formU=UpdProductoForm(instance=producto)
+
+    if request.method=='POST':
+        formU=UpdProductoForm(request.POST, files=request.FILES, instance=producto)
+        if formU.is_valid():
+            formU.save()
+            messages.set_level(request,messages.WARNING)
+            messages.warning(request,"Producto Modificado")
+            return redirect('AdminCarta')   
+    datos={
+        'formU':formU,
+        'producto':producto
+    }
+    return render(request,'aplicacion/admin_Carta_M.html',datos)
+
+def admin_Carta_E(request,id):
     producto=get_object_or_404(Producto,id_producto=id)
     if request.method=="POST":
         producto.delete()
-        return redirect(to='AdminCarta')
-   
-    return redirect('AdminCarta')
+        remove(path.join(str(settings.MEDIA_ROOT).replace('/media','')+str(producto.imagen.url).replace('/','\\')))
+        messages.set_level(request,messages.WARNING)
+        messages.warning(request,'Producto eliminado correctamente')
+        return redirect('AdminCarta')
     
+    datos={
+        'productos':producto
+    }
+    return render(request,'aplicacion/admin_Carta_E.html',datos)    
     
 
-
+def detalle(request,id):
+    producto=get_object_or_404(Producto,id_producto=id)
+    datos={
+        "producto":producto
+    }
+    return render(request,'aplicacion/detalle.html',datos)  

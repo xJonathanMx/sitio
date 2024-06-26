@@ -1,0 +1,87 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+    <link rel="icon" href= {% static "../img/sushiincon.png"%} >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "../static/css/admin_Carta_E.css" %}">
+</head>
+
+<body style="background-color: rgba(255, 255, 255, 0.7); ">
+    <nav class="navbar">
+        <a href="{% url "index" %}" class="logo">SushiDeuS Admin</a>
+        <div class="nav-links">
+            <ul>
+                <li ><a href="{% url "index" %}">Inicio</a></li>
+                <li><a href="{% url "index" %}">Nosotros</a></li>
+                <li class="active"><a href="{% url "carta"%}">Carta</a></li>
+                <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
+                <li><a href="{% url "carrito" %}">Carrito</a></li>
+                <li><a href="{% url "login" %}">Login</a></li>
+            </ul>
+        </div>
+        <img src={% static "../static/img/btn hamburger.png" %} alt="menu hamburgesa" class="menu-hamburgesa">
+    </nav>
+    
+    <div id="detalle">
+        <div class="row">
+        <div class="p-5 border rounded shadow mt-4" >
+            <h4 >Eliminar Producto</h4>
+            <div class="datos">
+                <h3 style="border-top: 2px solid black;">{{productos.nom_producto}}</h3>
+                <div class="imagen">
+                    <img id="imagen" src="{{ productos.imagen.url }}" alt="{{productos.nom_producto}}" ">
+                </div>
+                <p>{{productos.descripcion}}</p>
+                <p style="border-bottom: 2px solid black;">{{productos.valor}}</p>
+                <div class="btnes">
+                    <input type="button" value="Eliminar" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+                    <a href="{% url "AdminCarta" %}" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <!-- Modal Header -->
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title text-light">Confirmar Acción</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h4>¿Esta seguro de eliminar el Producto?</h4>
+                    <div  >
+                   <h5 > {{productos.nom_producto}}</h5>
+                </div>
+                
+            </div>
+                <!-- Modal footer -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Confirmar Eliminación</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static "../static/js/carta.js" %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

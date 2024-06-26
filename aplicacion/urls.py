@@ -4,7 +4,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,Modificar_Producto,Eliminar_Producto
+from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
@@ -21,8 +21,6 @@ urlpatterns = [
     path('Usuarios/', gestion_usuario, name="Usuarios"),
     path('CartaAdmin/', Carta_admin, name='AdminCarta'),
     path('agregar-producto/', Agregar_Producto, name='Agregar_Producto'),
-    path('modificar-producto/<id>',Modificar_Producto, name='Modificar_Producto'),
-    path('eliminar-producto/<id>',Eliminar_Producto,name='Eliminar_Producto'),
     path('agregar_al_carrito/<int:id_producto>/', agregar_al_carrito, name='agregar_al_carrito'),
     path('eliminar_del_carrito/<int:id_producto>/', eliminar_del_carrito, name='eliminar_del_carrito'),
     
