@@ -2,9 +2,9 @@ from os import remove, path
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Producto
+from .models import Producto,Usuario
 from django.shortcuts import get_object_or_404
-from .forms import ProductoForm, RegistroUsuarioForm, UpdProductoForm
+from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -77,6 +77,7 @@ def agregar_al_carrito(request, id_producto):
 
 def carrito(request):
     lista_productos_carrito = request.session.get('carrito', [])
+    formulario=DeliveryForm
     productos = Producto.objects.filter(id_producto__in=[item['id_producto'] for item in lista_productos_carrito])
     productos_carrito = []
 
@@ -94,7 +95,8 @@ def carrito(request):
 
     context = {
         'productos_carrito': productos_carrito,
-        'total': total
+        'total': total,
+        'fomulario':formulario
     }
     return render(request, 'aplicacion/carrito.html', context)
 
@@ -123,7 +125,13 @@ def admin(request):
 
 
 def gestion_usuario(request):
-    return render(request,'aplicacion/gestion_usuarios.html')
+    usuarios=Usuario.objects.all()
+        
+    datos = {
+        "usuario": usuarios,
+        
+    }
+    return render(request,'aplicacion/gestion_usuarios.html',datos)
 
 
 def Carta_admin(request):
@@ -150,7 +158,7 @@ def Agregar_Producto (request):
         else:
             messages.error(request,"Error al agregar el producto")
             return redirect('AdminCarta')
-    return JsonResponse({'success': False, 'error': 'Solicitud inválida'})
+    
 
 
 

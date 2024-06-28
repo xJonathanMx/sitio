@@ -44,7 +44,13 @@ class Pedido(models.Model):
 
     def __str__(self):
         return f"Pedido {self.id_pedido} - {self.nombre_producto}"
-
+class Delivery(models.Model):
+    id_delivery=models.AutoField(primary_key=True)
+    direccion=models.CharField(max_length=100,null=False)
+    telefono= models.IntegerField(max_length=11,null=False)
+    referencia=models.CharField(max_length=100, null=True)
+    comentario=models.CharField(max_length=150, null=True)
+    propietario=models.ForeignKey(Usuario,on_delete=models.PROTECT,default='100')
 class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
     nomb_comanda = models.CharField(max_length=100)
