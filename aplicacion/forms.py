@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password
-from .models import Usuario
+from .models import Pedido, Usuario
 from itertools import cycle
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
@@ -22,7 +22,10 @@ class DeliveryForm(forms.ModelForm):
     class Meta:
         model =Delivery
         fields=("direccion","telefono","referencia","comentario")
-
+class AgregarPedido(forms.ModelForm):
+    class Meta:
+        model=Pedido
+        fields=("precio_total","fecha_pedido","estado","cantidad")#"nombre_producto","precio",
 
 class RegistroUsuarioForm(forms.ModelForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)

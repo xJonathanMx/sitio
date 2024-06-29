@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Comuna, Usuario, Producto, Pedido, Comanda, CantidadProducto
+from .models import  Delivery, Usuario, Producto, Pedido, Comanda, CantidadProducto
 
 # Register your models here.
 #para que salga como una lista en la base de datos
@@ -9,10 +9,7 @@ from .models import Comuna, Usuario, Producto, Pedido, Comanda, CantidadProducto
 
 ##admin.site.register(Persona)
 
-@admin.register(Comuna)
-class ComunaAdmin(admin.ModelAdmin):
-    list_display = ('id_comuna', 'nomb_comuna')
-    search_fields = ('nomb_comuna',)
+
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
@@ -28,9 +25,9 @@ class ProductoAdmin(admin.ModelAdmin):
 
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ('id_pedido', 'nombre_producto', 'precio', 'precio_total', 'fecha_pedido', 'estado', 'usuario', 'comuna')
-    search_fields = ('nombre_producto', 'estado', 'usuario__nombre', 'comuna__nomb_comuna')
-    list_filter = ('estado', 'fecha_pedido', 'usuario', 'comuna')
+    list_display = ('id_pedido', 'precio_total', 'fecha_pedido', 'estado', 'usuario')# 'nombre_producto', 'precio',
+    search_fields = ('estado', 'usuario__nombre')#'nombre_producto', 
+    list_filter = ('estado', 'fecha_pedido', 'usuario')
 
 @admin.register(Comanda)
 class ComandaAdmin(admin.ModelAdmin):
@@ -41,5 +38,10 @@ class ComandaAdmin(admin.ModelAdmin):
 @admin.register(CantidadProducto)
 class CantidadProductoAdmin(admin.ModelAdmin):
     list_display = ('id_cant_prod', 'nom_producto', 'cant_producto', 'pedido', 'producto')
-    search_fields = ('nom_producto', 'pedido__id_pedido', 'producto__nom_producto')
+    search_fields = ('nom_producto', 'pedido__id_pedido')#, 'producto__nom_producto'
     list_filter = ('cant_producto',)
+
+@admin.register(Delivery)
+class DeliveryUser(admin.ModelAdmin):
+    list_display=('id_delivery','direccion','telefono','referencia','comentario')
+    list_filter=['propietario','telefono']

@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -118,43 +118,27 @@
                     ></button>
                   </div>
                   <div class="modal-body">
-                    <form action="#" class="was-validated">
-                        <div class="form-group">
-                          <label for="direccion">Dirección:</label>
-                          <input type="text" id="direccion" name="direccion" required />
-                        </div>
-                        <div class="form-group">
-                          <label for="telefono">Teléfono:</label>
-                          <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Por favor ingresa un número de teléfono válido de 10 dígitos" required />
-                        </div>
-                        <div class="form-group">
-                          <label for="referencia">Referencia:</label>
-                          <textarea id="referencia" name="referencia" ></textarea>
-                        </div>
-                        <button type="submit">Guardar</button>
-                      </form>
+                    <form action="{% url 'delivery' %}" class="was-validated" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {{ formulario| crispy }}
+                      <div class="mb-3">
+                      </div>
+                      <div class="modal-footer">
+                    
+                        <button  type="submit" class="btn btn-primary">Guardar Producto</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          Cerrar
+                        </button>
+                      </div>
+                    </form>
                   </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Cerrar
-                    </button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
 
-            <button
-              type="button"
-              class="btn btn-primary m-1"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdropComentario"
-            >
-              Comentario
-            </button>
+            
+             
 
         </div>
 
@@ -166,49 +150,7 @@
 
 
     <!-- Modal Comentario -->
-    <div
-    class="modal fade"
-    id="staticBackdropComentario"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">
-            Agrege Comentario
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <form action="#" class="was-validated">
-              <div class="form-group">
-                <label for="comentario">Comentario</label>
-                <textarea id="comentario" name="comentario" ></textarea>
-              </div>
-              <button type="submit">Guardar</button>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Cerrar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+   
 
     <div class="botones">
       <a href="{% url "carta" %}">Volver</a>

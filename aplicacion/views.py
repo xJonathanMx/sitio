@@ -1,10 +1,11 @@
+from datetime import timezone
 from os import remove, path
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Producto,Usuario
+from .models import Delivery, Pedido, Producto,Usuario
 from django.shortcuts import get_object_or_404
-from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm
+from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm,AgregarPedido
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -77,7 +78,7 @@ def agregar_al_carrito(request, id_producto):
 
 def carrito(request):
     lista_productos_carrito = request.session.get('carrito', [])
-    formulario=DeliveryForm
+    formulario=DeliveryForm()
     productos = Producto.objects.filter(id_producto__in=[item['id_producto'] for item in lista_productos_carrito])
     productos_carrito = []
 
@@ -92,14 +93,35 @@ def carrito(request):
                 break
 
     total = sum(item['subtotal'] for item in productos_carrito)
-
+   
     context = {
         'productos_carrito': productos_carrito,
         'total': total,
-        'fomulario':formulario
+        'formulario':formulario
     }
     return render(request, 'aplicacion/carrito.html', context)
 
+
+def crear_pedido(request):
+    if request.method == "POST":
+        lista_productos_carrito = request.session.get('carrito', [])
+        usuario = request.user
+
+        for item in lista_productos_carrito:
+            producto = Producto.objects.get(id_producto=item['id_producto'])
+            cantidad = item['cantidad']
+            precio_total = producto.valor * cantidad
+
+            Pedido.objects.create(
+                precio_total=precio_total,
+                fecha_pedido=timezone.now(),
+                estado='Pendiente', 
+                cantidad=cantidad,
+                usuario=usuario
+            )
+
+        # Limpia el carrito después de crear el pedido
+        request.session['carrito'] = []
 
 def eliminar_del_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
@@ -117,10 +139,25 @@ def eliminar_del_carrito(request, id_producto):
     request.session['carrito'] = carrito
     return redirect('carrito')
 
-
+def Delivery_Guardar(request):
+    if request.method == "POST":
+        formulario = DeliveryForm(request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Datos guardados")
+            return redirect('carrito')
+        else:
+            messages.error(request,"Error al guardar tus datos")
+            return redirect('carrito')
+    
 
 def admin(request):
-    return render(request,'aplicacion/admin_usuario.html')
+    delivery=Delivery.objects.all()
+    datos={
+        "delivery":delivery
+    }
+    
+    return render(request,'aplicacion/admin_usuario.html',datos)
 
 
 
