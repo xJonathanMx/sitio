@@ -31,7 +31,7 @@
                 {% load crispy_forms_tags %}
                 <form method="post">
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    {{ form.as_p}}
                     <div class="mb-3">
                         <a href="{% url 'registro_usuario' %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
                         <br>

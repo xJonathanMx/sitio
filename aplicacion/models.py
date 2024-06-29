@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,16 +11,10 @@ class Comuna(models.Model):
         return self.nomb_comuna
 
 class Usuario(models.Model):
-    rut = models.CharField(max_length=12, primary_key=True)
-    username = models.CharField(max_length=12, unique=True)
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    correo = models.EmailField(max_length=100, unique=True)
-    contraseña = models.CharField(max_length=100)
-    esadmin = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+    usuario=models.OneToOneField(User, unique=True, related_name='perfil', on_delete=models.CASCADE)
+
+    rut = models.CharField(max_length=12, primary_key=True)
 
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True)
@@ -44,13 +39,17 @@ class Pedido(models.Model):
 
     def __str__(self):
         return f"Pedido {self.id_pedido} - {self.nombre_producto}"
+    
+
 class Delivery(models.Model):
     id_delivery=models.AutoField(primary_key=True)
     direccion=models.CharField(max_length=100,null=False)
-    telefono= models.IntegerField(max_length=11,null=False)
+    telefono= models.IntegerField(null=False)
     referencia=models.CharField(max_length=100, null=True)
     comentario=models.CharField(max_length=150, null=True)
     propietario=models.ForeignKey(Usuario,on_delete=models.PROTECT,default='100')
+
+
 class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
     nomb_comanda = models.CharField(max_length=100)

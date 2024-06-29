@@ -4,11 +4,13 @@ from crispy_forms.layout import Layout, Submit
 from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password
 from .models import Usuario
+from django.contrib.auth.models import User
 from itertools import cycle
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UsernameField
 from .models import Producto,Delivery
+
 
 class ProductoForm(forms.ModelForm):
     class Meta:
@@ -24,32 +26,16 @@ class DeliveryForm(forms.ModelForm):
         fields=("direccion","telefono","referencia","comentario")
 
 
+class frmCrearCuenta(UserCreationForm):
+    class Meta:
+        model=User
+        fields=["username","first_name", "last_name","email", "password1","password2"]
+
 class RegistroUsuarioForm(forms.ModelForm):
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
 
     class Meta:
         model = Usuario
-        fields = ['rut', 'nombre', 'apellido', 'correo']
-
-    def clean_password2(self):
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Las contraseñas no coinciden")
-        return password2
-
-    def clean_correo(self):
-        correo = self.cleaned_data.get('correo')
-        if Usuario.objects.filter(correo=correo).exists():
-            raise forms.ValidationError("El correo electrónico ya está en uso.")
-        return correo
-    
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        if Usuario.objects.filter(username=username).exists():
-            raise forms.ValidationError("Este usuario ya está en uso.")
-        return username
+        fields = ['rut']
 
     def clean_rut(self):
         rut = self.cleaned_data.get('rut')

@@ -16,9 +16,8 @@ class ComunaAdmin(admin.ModelAdmin):
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('rut', 'nombre', 'apellido', 'correo', 'esadmin')
-    search_fields = ('rut', 'nombre', 'apellido', 'correo')
-    list_filter = ('esadmin',)
+    list_display = ('rut',)
+    search_fields = ('rut',)
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):

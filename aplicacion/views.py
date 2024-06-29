@@ -4,10 +4,13 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Producto,Usuario
 from django.shortcuts import get_object_or_404
-from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm
+from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm, frmCrearCuenta
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login as auth_login
+from django.contrib.auth.forms import AuthenticationForm
 
 
 
@@ -36,20 +39,38 @@ def pagar(request):
 
 def registro_usuario(request):
     if request.method == 'POST':
-        form = RegistroUsuarioForm(request.POST)
-        if form.is_valid():
+        formDatos = RegistroUsuarioForm(request.POST)
+        form = frmCrearCuenta(request.POST)
+        if form.is_valid() and formDatos.is_valid():
             try:
-                user = form.save(commit=False)
-                user.is_staff = False
-                user.is_superuser = False
+                form.save()
+                datoDjango = form.cleaned_data
+                usuario = User.objects.get(username =  datoDjango.get("username"))
+                datos = formDatos.cleaned_data
+                user = Usuario()
+                user.rut = datos.get("rut")
+                user.usuario = usuario
                 user.save()
                 return redirect('index')
             except IntegrityError:
                 form.add_error('correo', 'El correo electrónico ya está en uso.')
     else:
+        formDatos = frmCrearCuenta()
         form = RegistroUsuarioForm()
-    return render(request, 'aplicacion/registro-usuario.html', {'form': form})
+    return render(request, 'aplicacion/registro-usuario.html', {'form': form, 'form2' : formDatos})
 
+
+class CustomLoginView(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'registration/login.html'
+
+    def form_valid(self, form):
+        user = form.get_user()
+        auth_login(self.request, user)
+        if user.is_staff:
+            return redirect('admins')
+        else:
+            return redirect('index')
 
 def login(request):
     return render (request,'aplicacion/login.html')
