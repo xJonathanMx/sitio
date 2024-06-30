@@ -42,28 +42,32 @@
             <h1 id="titcoman">Comandas</h1> 
             
             <div class="container">
-                {% for d in  delivery %}
-                <div  class="row">
-                    <div class="col-md-2">
-                        <div class="card mb-3">
-                            <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
-                            <div class="card-body">
-                                <h1>nombre</h1>
-                                <p id="subti">comentario:</p>
-                                <p>{{d.comentario}}</p>
-                                <div class="btnes_com">
-                                <a class="btn">Terminar</a>
-                                <a class="btn">Editar</a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                   
+                
+                            <div  class="row">
+                                {% for c in  comanda %}
+                                <div class="col-md-3">
+                                <div class="card  mb-3">
+                                    <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
+                                        <div class="card-body">
+                                            <h1>Comanda: {{c.id_comanda}}</h1>
+                                            <p id="subti">Descripcion:</p>
+                                            <p>{{c.producto}}</p>
+                                            <p>{{c.pedido}}</p>
+                                            <p>{{c.direccion}}</p>
+                                            <p>{{c.fecha_emision}}</p>
+                                            
+                                                <div class="btnes_com">
+                                                    <a class="btn">Terminar</a>
+                                                       
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
                     
-                   
-                    
+
                 </div>
+                
             </div>
         </div>
     </section>

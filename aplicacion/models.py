@@ -23,21 +23,21 @@ class Producto(models.Model):
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     imagen=models.ImageField(upload_to='producto/',null=True)
 
-
     def __str__(self):
         return self.nom_producto
 
 class Pedido(models.Model):
     id_pedido = models.AutoField(primary_key=True)
-#nombre_producto = models.CharField(max_length=100)
+    #nombre_producto = models.CharField(max_length=100)
     #precio = models.DecimalField(max_digits=10, decimal_places=2)
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pedido = models.DateField()
     estado = models.CharField(max_length=50)
-    cantidad= models.IntegerField()
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
     def __str__(self):
-        return f"Pedido {self.id_pedido} - {self.nombre_producto}"
+        return f"{self.usuario}-{self.Cantidad}"
+    
 class Delivery(models.Model):
     id_delivery=models.AutoField(primary_key=True)
     direccion=models.CharField(max_length=100,null=False)
@@ -49,21 +49,20 @@ class Delivery(models.Model):
         return self.direccion + "-" + self.referencia
 class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
-    nomb_comanda = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=255)
+    #nomb_comanda = models.CharField(max_length=100)
+    #direccion = models.CharField(max_length=255)
     fecha_emision = models.DateField()
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    direccion = models.ForeignKey (Delivery, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nomb_comanda
+        return f"{self.pedido}-{self.direccion}"
 
 class CantidadProducto(models.Model):
     id_cant_prod = models.AutoField(primary_key=True)
-    nom_producto = models.CharField(max_length=100)
+    #nom_producto = models.CharField(max_length=100)
     cant_producto = models.PositiveIntegerField()
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-
     def __str__(self):
-        return f"{self.nom_producto} - {self.cant_producto}"
+        return f"{self.cant_producto} Promos de {self.producto}"
 #compre genera pedido, y de pedido genera comanda

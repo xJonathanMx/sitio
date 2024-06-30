@@ -25,7 +25,7 @@ class DeliveryForm(forms.ModelForm):
 class AgregarPedido(forms.ModelForm):
     class Meta:
         model=Pedido
-        fields=("precio_total","fecha_pedido","estado","cantidad")#"nombre_producto","precio",
+        fields=("precio_total","fecha_pedido","estado")#"nombre_producto","precio",,"cantidad"
 
 class RegistroUsuarioForm(forms.ModelForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)

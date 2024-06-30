@@ -3,7 +3,7 @@ from os import remove, path
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Delivery, Pedido, Producto,Usuario
+from .models import CantidadProducto, Comanda, Delivery, Pedido, Producto,Usuario
 from django.shortcuts import get_object_or_404
 from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm,AgregarPedido
 from django.contrib.auth.models import User
@@ -153,8 +153,12 @@ def Delivery_Guardar(request):
 
 def admin(request):
     delivery=Delivery.objects.all()
+    comanda=Comanda.objects.all()
+    cant_prod=CantidadProducto.objects.all()
     datos={
-        "delivery":delivery
+        "delivery":delivery,
+        "cant_prod":cant_prod,
+        "comanda":comanda,
     }
     
     return render(request,'aplicacion/admin_usuario.html',datos)
