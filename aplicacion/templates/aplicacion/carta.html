@@ -21,9 +21,15 @@
             <li ><a href="{% url "index" %}">Inicio</a></li>
                 <li><a href="{% url "index" %}">Nosotros</a></li>
                 <li class="active" ><a href="{% url "carta"%}">Carta</a></li>
-                <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
-                <li><a href="{% url "carrito" %}">Carrito</a></li>
-                <li><a href="{% url "login" %}">Login</a></li>
+                
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "pedidos"%}">Mis Pedidos</a></li>
+                    <li><a href="{% url "carrito" %}">Carrito</a></li>
+                    <li><a href="{% url 'user_profile' %}">Perfil de {{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
         <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
@@ -36,6 +42,16 @@
     </div>
     <section>
         <div class="informe_cartas">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        </div>
+                        
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
             
 
@@ -50,8 +66,12 @@
                                 <p class="card-text">$ {{ product.valor }}</p>
                                 <div class="text-end">
                                     <a href="{% url 'detalle' product.id_producto %}" class="btn btn">Detalle</a>
-                                        <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
-                                </div>
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url 'agregar_al_carrito' product.id_producto %}" class="btn btn">Agregar</a>
+                                        {% else %}
+                                            <button onclick="alert('Debe estar logueado para agregar productos al carrito')" class="btn btn">Agregar</button>
+                                        {% endif %}
+                                </div>  
                             </div>
                         </div>
                     </div>

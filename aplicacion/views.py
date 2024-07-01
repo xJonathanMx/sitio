@@ -9,8 +9,9 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.contrib.auth.views import LoginView
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -22,6 +23,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 def index(request):
             return render(request,'aplicacion/index.html')
+
 
 def carta(request):
 
@@ -59,7 +61,7 @@ def registro_usuario(request):
         form = RegistroUsuarioForm()
     return render(request, 'aplicacion/registro-usuario.html', {'form': form, 'form2' : formDatos})
 
-
+#login
 class CustomLoginView(LoginView):
     form_class = AuthenticationForm
     template_name = 'registration/login.html'
@@ -70,6 +72,7 @@ class CustomLoginView(LoginView):
         if user.is_staff:
             return redirect('admins')
         else:
+            messages.success(self.request, f'Bienvenido {user.username}')
             return redirect('index')
 
 def login(request):
@@ -84,15 +87,17 @@ def tabla_pedidos(request):
 def agregar_al_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
 
-    carrito = [item for item in carrito if isinstance(item, dict) and 'id_producto' in item]
+    carrito = [item for item in carrito if isinstance(item, dict) and 'id_producto' in item ]
     producto_existente = next((item for item in carrito if item['id_producto'] == id_producto), None)
+    
 
     if producto_existente:
         producto_existente['cantidad'] += 1
     else:                                                                       
         carrito.append({'id_producto': id_producto, 'cantidad': 1})
 
-    request.session['carrito'] = carrito
+    request.session['carrito'] = carrito   
+    
     return redirect('carrito')
 
 
@@ -221,3 +226,13 @@ def detalle(request,id):
         "producto":producto
     }
     return render(request,'aplicacion/detalle.html',datos)  
+
+
+@login_required
+def user_profile(request):
+    return render(request, 'user_profile.html', {'user': request.user})
+
+
+def custom_logout(request):
+    logout(request)
+    return redirect('index')

@@ -20,7 +20,12 @@
                 <li><a href="{% url "carta"%}">Carta</a></li>
                 <li><a href="{% url "pedidos" %}">Mis Pedidos</a></li>
                 <li><a href="{% url 'carrito' %}">Carrito</a></li>
-                <li class="active"><a href="{% url "login" %}">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_profile' %}">Perfil de {{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
         <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
@@ -34,8 +39,9 @@
             <form action="" method="post" class="shadow p-3">
                 <h1>Registro de usuario</h1>
                 {% csrf_token %}
-                {{ form2| crispy }}
                 {{ form| crispy }}
+                {{ form2| crispy }}
+                
                 
 
                 <div class="mb-3">
