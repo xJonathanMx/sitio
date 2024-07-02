@@ -49,96 +49,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12</td>
-                        <td>SushiBurger</td>
-                        <td>2</td>
-                        <td>948677366</td>
-                        <td>Carabineros 123</td>
+                    {% for p in pedido %}
+                        
+                            <tr>
+                                <td>{{p.id_pedido}}</td>
+                                <td>{{p.Cantidad.producto}}</td>
+                                <td>{{p.Cantidad.cant_producto}}</td>
+                                <td>{{p.delivery.telefono}}</td>
+                        <td>{{p.delivery.direccion}}</td>
                         <td>
-                            <div class="Estado_env">Enviado</div>
+                            {% if p.estado == 'ENVIADO' %}
+                            <div class="Estado_env">{{p.estado}}</div>
+                        {% elif p.estado == 'PENDIENTE' %}
+                            <div class="Estado_Pend">{{p.estado}}</div>
+                        {% elif p.estado == 'CANCELADO' %}
+                            <div class="Estado_Cance">{{p.estado}}</div>
+                        {% elif p.estado == 'ENTREGADO' %}
+                            <div class="Estado_Entr">{{p.estado}}</div>
+                        {% endif %}
                         </td>
                         <td>
                             <div class="btn-group">
+                                <form action="{% url 'cambiar_estado' p.id_pedido %}" method='post'>
+                                    {% csrf_token %}
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary dropdown-toggle"
                                         data-bs-toggle="dropdown">Seleccionar Estado</button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Pendiente</a>
-                                        <a class="dropdown-item" href="#">Enviado</a>
-                                        <a class="dropdown-item" href="#">Entregado</a>
-                                        <a class="dropdown-item" href="#">Cancelado</a>
+                                        <button class="dropdown-item" type="submit" name="nuevo_estado" value="PENDIENTE">Pendiente</button>
+                                    <button class="dropdown-item" type="submit" name="nuevo_estado" value="ENVIADO">Enviado</button>
+                                    <button class="dropdown-item" type="submit" name="nuevo_estado" value="ENTREGADO">Entregado</button>
+                                    <button class="dropdown-item" type="submit" name="nuevo_estado" value="CANCELADO">Cancelado</button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>cryspi pollo</td>
-                        <td>6</td>
-                        <td>91223121</td>
-                        <td>Duoc Uc</td>
-                        <td><div class=Estado_Pend>Pendiente</div></td>
-                        <td>
-                            <div class="btn-group">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Pendiente</a>
-                                        <a class="dropdown-item" href="#">Enviado</a>
-                                        <a class="dropdown-item" href="#">Entregado</a>
-                                        <a class="dropdown-item" href="#">Cancelado</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Sushi Pleto</td>
-                        <td>3</td>
-                        <td>912345678</td>
-                        <td>Por el Norte 12</td>
-                        <td><div class="Estado_Cance">Cancelado</div></td>
-                        <td>
-                            <div class="btn-group">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Pendiente</a>
-                                        <a class="dropdown-item" href="#">Enviado</a>
-                                        <a class="dropdown-item" href="#">Entregado</a>
-                                        <a class="dropdown-item" href="#">Cancelado</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>SushiPerron</td>
-                        <td>10</td>
-                        <td>123456789</td>
-                        <td>Por el Centro 456</td>
-                        <td><div class="Estado_Entr">Entregado</div></td>
-                        <td>
-                            <div class="btn-group">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown">Seleccionar Estado</button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Pendiente</a>
-                                        <a class="dropdown-item" href="#">Enviado</a>
-                                        <a class="dropdown-item" href="#">Entregado</a>
-                                        <a class="dropdown-item" href="#">Cancelado</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    
+                    {% endfor %}
                 </tbody>
             </table>
 
