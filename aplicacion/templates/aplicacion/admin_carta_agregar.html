@@ -72,7 +72,7 @@
                   
                   <form action="{% url 'Agregar_Producto' %}" class="was-validated" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ formulario| crispy }}                   
+                    {{ formulario| crispy }}
                     <div class="mb-3">
                     </div>
                     <div class="modal-footer">
@@ -130,47 +130,7 @@
 
 
                 
-            {% comment %} <!-- Modal EDICION DE PRODUCTO-->
-          <div
-          class="modal fade"
-          id="edicion"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
-                  Editar producto
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form id="UpdProductoForm" action="" class="was-validated" method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ formU| crispy }}                   
-                  <div class="mb-3">
-                  </div>
-                  <div class="modal-footer">
-                
-                    <input  type="submit" value="Modificar" class="btn btn-primary"></input>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                      Cerrar
-                    </button>
-                  </div>
-                </form>
-</div>
 
-<!--FIN MODAL--> {% endcomment %}
 
     </section>
 

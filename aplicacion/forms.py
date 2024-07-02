@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password
-from .models import Usuario
+from .models import Pedido, Usuario
 from django.contrib.auth.models import User
 from itertools import cycle
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -25,11 +25,6 @@ class DeliveryForm(forms.ModelForm):
         model =Delivery
         fields=("direccion","telefono","referencia","comentario")
 
-
-class frmCrearCuenta(UserCreationForm):
-    class Meta:
-        model=User
-        fields=["username","first_name", "last_name","email", "password1","password2"]
 
 class RegistroUsuarioForm(forms.ModelForm):
 
