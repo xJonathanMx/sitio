@@ -216,10 +216,12 @@ def admin(request):
     delivery=Delivery.objects.all()
     comanda=Comanda.objects.all()
     cant_prod=CantidadProducto.objects.all()
+    pedido=Pedido.objects.all()
     datos={
         "delivery":delivery,
         "cant_prod":cant_prod,
         "comanda":comanda,
+        "pedido":pedido
     }
     
     return render(request,'aplicacion/admin_usuario.html',datos)

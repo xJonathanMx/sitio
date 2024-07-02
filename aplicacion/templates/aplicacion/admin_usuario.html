@@ -56,10 +56,12 @@
                                         <div class="card-body">
                                             <h1>Comanda: {{c.id_comanda}}</h1>
                                             <p id="subti">Descripcion:</p>
-                                            <p>{{c.producto}}</p>
-                                            <p>{{c.pedido}}</p>
-                                            <p>{{c.direccion}}</p>
-                                            <p>{{c.fecha_emision}}</p>
+                                            
+                                            <p>Usuario: {{c.pedido.usuario}}</p>
+                                            <p>Direccion:   {{c.direccion.direccion}}</p>
+                                            <p>{{c.direccion.referencia}}</p>
+                                            <p>Fecha: {{c.fecha_emision}}</p>
+                                            
                                             
                                                 <div class="btnes_com">
                                                     <a class="btn">Terminar</a>
