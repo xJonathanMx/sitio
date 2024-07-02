@@ -40,6 +40,7 @@
                 <thead>
                     <tr>
                         <th>Producto</th>
+                        <th>Cantidad</th>
                         <th>Fecha</th>
                         <th>Total</th>
                         <th>Estado</th>
@@ -52,7 +53,8 @@
                     {% if user.is_authenticated %}
                     {% for pedido in pedidos %}
                         <tr>
-                            <td>{{ pedido.Cantidad }}</td>
+                            <td>{{ pedido.Cantidad.producto }}</td>
+                            <td>{{ pedido.Cantidad.cant_producto }}</td>
                             <td>{{ pedido.fecha_pedido }}</td>
                             <td>{{ pedido.precio_total }}</td>
                             <td><div class="Estado_env">{{pedido.estado}}</div></td>

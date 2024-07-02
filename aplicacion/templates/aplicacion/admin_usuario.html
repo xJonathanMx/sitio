@@ -49,25 +49,24 @@
             <div class="container">
                 
                             <div  class="row">
-                                {% for c in  comanda %}
-                                <div class="col-md-3">
-                                <div class="card  mb-3">
-                                    <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
-                                        <div class="card-body">
-                                            <h1>Comanda: {{c.id_comanda}}</h1>
-                                            <p id="subti">Descripcion:</p>
-                                            <p>{{c.producto}}</p>
-                                            <p>{{c.pedido}}</p>
-                                            <p>{{c.direccion}}</p>
-                                            <p>{{c.fecha_emision}}</p>
-                                            
-                                                <div class="btnes_com">
-                                                    <a class="btn">Terminar</a>
-                                                       
+                                {% for c in  comandas %}
+                                    <div class="col-md-3">
+                                    <div class="card  mb-3">
+                                        <img src="{% static "../static/img/cryspipollo(1).jpg" %}" alt="">
+                                            <div class="card-body">
+                                                <h1>Comanda</h1>
+                                                <p id="subti">Descripcion:</p>
+                                                <p>{{c.producto}}</p>
+                                                <p>{{c.pedido}}</p>
+                                                <p>Direccion:{{c.direccion}}</p>
+                                                <p>fecha: {{c.fecha_emision}}</p>
+                                                
+                                                    <div class="btnes_com">
+                                                        <a href="{% url 'terminar_comanda' comanda_id=c.id_comanda %}" class="btn">Terminar Comanda</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     {% endfor %}
                     
 

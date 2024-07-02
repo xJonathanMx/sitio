@@ -1,7 +1,7 @@
 from datetime import timezone
 from os import remove, path
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 from .models import CantidadProducto, Comanda, Delivery, Pedido, Producto,Usuario
 from django.shortcuts import get_object_or_404
@@ -36,8 +36,12 @@ def carta(request):
 
 def pedidos(request):
     pedidos = Pedido.objects.filter(usuario=request.user)
+    cantidadProduct = CantidadProducto.objects.all()
+    producto = Producto.objects.all()
     datos={
-        'pedidos' : pedidos
+        'producto' : producto,
+        'pedidos' : pedidos, 
+        'cantidadProductos' : cantidadProduct
     }
     return render(request,'aplicacion/pedidos.html',datos)
 
@@ -183,17 +187,22 @@ def Delivery_Guardar(request):
     
 
 def admin(request):
-    delivery=Delivery.objects.all()
-    comanda=Comanda.objects.all()
-    cant_prod=CantidadProducto.objects.all()
-    datos={
-        "delivery":delivery,
-        "cant_prod":cant_prod,
-        "comanda":comanda,
+    # Obtener todas las comandas activas ordenadas por fecha de emisión
+    comandas_activas = Comanda.objects.filter(terminada=False).order_by('fecha_emision')
+
+    # Obtener todos los objetos de Delivery y CantidadProducto
+    delivery = Delivery.objects.all()
+    cant_prod = CantidadProducto.objects.all()
+
+    # Crear un diccionario con los datos para enviar al template
+    datos = {
+        "delivery": delivery,
+        "comandas": comandas_activas,  # Usar solo las comandas activas
+        "cant_prod": cant_prod,
     }
     
-    return render(request,'aplicacion/admin_usuario.html',datos)
-
+    # Renderizar el template 'admin_usuario.html' con los datos
+    return render(request, 'aplicacion/admin_usuario.html', datos)
 
 
 def gestion_usuario(request):
@@ -354,3 +363,12 @@ def crear_pedido(request):
         return redirect('index')
 
     return redirect('carrito')
+
+
+def terminar_comanda(request, comanda_id):
+    comanda = get_object_or_404(Comanda, id_comanda=comanda_id)
+    comanda.terminada = True  # Marca la comanda como terminada
+    comanda.save()
+    
+    # Redirige de vuelta a la página de administración
+    return redirect('admins')

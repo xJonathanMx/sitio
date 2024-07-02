@@ -46,9 +46,10 @@ class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
     #nomb_comanda = models.CharField(max_length=100)
     #direccion = models.CharField(max_length=255)
-    fecha_emision = models.DateField()
+    fecha_emision = models.DateTimeField(auto_now_add=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     direccion = models.ForeignKey (Delivery, on_delete=models.CASCADE)
+    terminada = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.pedido}-{self.direccion}"
