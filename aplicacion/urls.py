@@ -4,7 +4,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,admin_Carta_M,admin_Carta_E, CustomLoginView, user_profile, custom_logout,Delivery_Guardar
+from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,admin_Carta_M,admin_Carta_E, CustomLoginView, user_profile, custom_logout,Delivery_Guardar, crear_pedido
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -30,6 +30,8 @@ urlpatterns = [
     path('eliminar_del_carrito/<int:id_producto>/', eliminar_del_carrito, name='eliminar_del_carrito'),
     path('profile/', user_profile, name='user_profile'),
     path('logout/', custom_logout, name='logout'),
+    path('delivery_guardar/', Delivery_Guardar, name='delivery_guardar'),
+    path('crear_pedido/', crear_pedido, name='crear_pedido'),
     
 ]
 if settings.DEBUG:

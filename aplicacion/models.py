@@ -28,7 +28,7 @@ class Pedido(models.Model):
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pedido = models.DateField()
     estado = models.CharField(max_length=50)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.usuario}-{self.Cantidad}"

@@ -13,6 +13,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone  
 
 
 
@@ -34,7 +35,11 @@ def carta(request):
 
 
 def pedidos(request):
-    return render(request,'aplicacion/pedidos.html')
+    pedidos = Pedido.objects.filter(usuario=request.user)
+    datos={
+        'pedidos' : pedidos
+    }
+    return render(request,'aplicacion/pedidos.html',datos)
 
 def pagar(request):
     return render(request,'aplicacion/pagar.html')
@@ -277,3 +282,75 @@ def user_profile(request):
 def custom_logout(request):
     logout(request)
     return redirect('index')
+
+
+
+@login_required
+def Delivery_Guardar(request):
+    if request.method == "POST":
+        formulario = DeliveryForm(request.POST, files=request.FILES)
+        if formulario.is_valid():
+            delivery_data = formulario.cleaned_data
+            request.session['delivery_data'] = delivery_data
+            print(delivery_data)
+            messages.success(request, "Datos de entrega guardados.")
+            return redirect('carrito')
+        else:
+            messages.error(request, "Error al guardar los datos de entrega.")
+            return redirect('carrito')
+        
+@login_required
+def crear_pedido(request):
+    if request.method == "POST":
+        lista_productos_carrito = request.session.get('carrito', [])
+
+        if not lista_productos_carrito:
+            messages.error(request, "No hay productos en el carrito para procesar el pedido.")
+            return redirect('carrito')
+
+        usuario = request.user
+        delivery_data = request.session.get('delivery_data', None)
+
+        if not delivery_data:
+            messages.error(request, "Debe proporcionar los datos de entrega antes de pagar.")
+            return redirect('carrito')
+
+        delivery = Delivery.objects.create(
+            direccion=delivery_data['direccion'],
+            telefono=delivery_data['telefono'],
+            referencia=delivery_data.get('referencia', ''),
+            comentario=delivery_data.get('comentario', ''),
+            propietario=usuario.perfil  # Asegúrate de que esto esté correcto según tu modelo Usuario
+        )
+
+        for item in lista_productos_carrito:
+            producto = Producto.objects.get(id_producto=item['id_producto'])
+            cantidad = item['cantidad']
+            precio_total = producto.valor * cantidad
+
+            cantidad_producto = CantidadProducto.objects.create(
+                cant_producto=cantidad,
+                producto=producto
+            )
+
+            pedido = Pedido.objects.create(
+                precio_total=precio_total,
+                fecha_pedido=timezone.now(),
+                estado='Pendiente',
+                usuario=usuario,
+                Cantidad=cantidad_producto  # Asigna el objeto CantidadProducto creado
+            )
+
+            Comanda.objects.create(
+                fecha_emision=timezone.now(),
+                pedido=pedido,
+                direccion=delivery
+            )
+
+        request.session['carrito'] = []
+        request.session['delivery_data'] = None
+
+        messages.success(request, "Pedido creado exitosamente.")
+        return redirect('index')
+
+    return redirect('carrito')

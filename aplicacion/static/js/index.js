@@ -33,6 +33,16 @@ $(document).ready(function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    var alerta = document.getElementsByClassName('alert');  // Selecciona la primera alerta
+    if (alerta) {
+        setTimeout(function () {
+            alerta.style.display = 'none';  // Oculta la alerta
+        }, 3000);  // Tiempo en milisegundos (3 segundos)
+    }
+});
+
+
 
 //Validar rut
 

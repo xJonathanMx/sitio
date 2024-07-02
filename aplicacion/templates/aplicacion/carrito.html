@@ -18,6 +18,24 @@
   </head>
 
   <body >
+    <style>
+      .alert {
+          padding: 15px;
+          margin-bottom: 20px;
+          border: 1px solid transparent;
+          border-radius: 4px;
+      }
+      .alert-success {
+          color: #155724;
+          background-color: #d4edda;
+          border-color: #c3e6cb;
+      }
+      .alert-error {
+          color: #721c24;
+          background-color: #f8d7da;
+          border-color: #f5c6cb;
+      }
+  </style>
     <nav class="navbar">
         <a href="{% url "index" %}" class="logo">SushiDeuS</a>
         <div class="nav-links">
@@ -37,7 +55,16 @@
         </div>
         <img src="{% static "../static/img/btn hamburger.png" %}" alt="menu hamburgesa" class="menu-hamburgesa">
     </nav>
-
+    {% if messages %}
+      <div class="alert alert-success alert-dismissible fade show d-flex justify-content-center" role="alert">
+        <ul>
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
     <div class="titulo">
       <h1>Carrito de compras</h1>
     </div>
@@ -123,14 +150,14 @@
                     ></button>
                   </div>
                   <div class="modal-body">
-                    <form action="{% url 'delivery' %}" class="was-validated" method="post" enctype="multipart/form-data">
+                    <form action="{% url 'delivery_guardar' %}" class="was-validated" method="post" enctype="multipart/form-data">
                       {% csrf_token %}
                       {{ formulario| crispy }}
                       <div class="mb-3">
                       </div>
                       <div class="modal-footer">
                     
-                        <button  type="submit" class="btn btn-primary">Guardar Producto</button>
+                        <button  type="submit" class="btn btn-primary">Guardar Datos de Entrega </button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                           Cerrar
                         </button>
@@ -159,14 +186,36 @@
 
     <div class="botones">
       <a href="{% url "carta" %}">Volver</a>
-      <a href="{% url "pagar" %}">pagar</a>
+      <a href="#" id="pagar-link">Pagar</a>
+      <form id="pagar-form" action="{% url 'crear_pedido' %}" method="post" style="display: none;">
+          {% csrf_token %}
+      </form>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        let alerta = document.querySelector('.alert');
+        if (alerta) {
+          setTimeout(function() {
+            alerta.classList.add('fade');
+            setTimeout(function() {
+              alerta.parentNode.removeChild(alerta);
+            }, 1000); // Duración de la animación de desvanecimiento de Bootstrap (0.5 segundos)
+          }, 3000); // Tiempo en milisegundos (3 segundos)
+        }
+      });
+
+      document.getElementById('pagar-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Previene el comportamiento por defecto del enlace
+        document.getElementById('pagar-form').submit(); // Envía el formulario al hacer clic en el enlace
+      });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="{% static "../static/js/index.js" %}"></script>
+  <script src="{% static "../static/js/index.js" %}"></script>
+  
   </body>
 </html>

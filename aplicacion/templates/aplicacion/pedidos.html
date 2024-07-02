@@ -40,56 +40,28 @@
                 <thead>
                     <tr>
                         <th>Producto</th>
-                        <th>Cantidad</th>
                         <th>Fecha</th>
                         <th>Total</th>
                         <th>Estado</th>
                         <th>Operacion</th>
-                       
+
                     </tr>
                 </thead>
+                
                 <tbody>
-                    <tr>
-                        <td>SushiBurger</td>
-                        <td>2</td>
-                        <td>11/11/2011</td>
-                        <td>$24000</td>
-                        <td><div class="Estado_env">Entregado</div></td>
-                        <td>
-                            <button class="btn btn-primary">Ver Detalle</button>
-                        </td>                        
-                    </tr>
-                    <tr>
-                        <td>cryspi pollo</td>
-                        <td>6</td>
-                        <td>11/11/2011</td>
-                        <td>$24000</td>
-                        <td><div class="Estado_env">Entregado</div></td>
-                        <td>
-                            <button class="btn btn-primary">Ver Detalle</button>
-                        </td> 
-                        
-                    </tr>
-                    <tr>
-                        <td>Sushi Pleto</td>
-                        <td>3</td>
-                        <td>14/12/2004</td>
-                        <td>$40.000</td>
-                        <td><div class="Estado_Cance">Cancelado</div></td>
-                        <td>
-                            <button class="btn btn-primary">Ver Detalle</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>SushiPerron</td>
-                        <td>10</td>
-                        <td>11/11/2011</td>
-                        <td>$24000</td>
-                        <td><div class="Estado_env">Entregado</div></td>
-                        <td>
-                            <button class="btn btn-primary">Ver Detalle</button>
-                        </td>
-                    </tr>
+                    {% if user.is_authenticated %}
+                    {% for pedido in pedidos %}
+                        <tr>
+                            <td>{{ pedido.Cantidad }}</td>
+                            <td>{{ pedido.fecha_pedido }}</td>
+                            <td>{{ pedido.precio_total }}</td>
+                            <td><div class="Estado_env">{{pedido.estado}}</div></td>
+                            <td>
+                                <button class="btn btn-primary">Ver Detalle</button>
+                            </td>                        
+                        </tr>
+                    {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
 
