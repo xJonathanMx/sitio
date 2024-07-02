@@ -25,6 +25,10 @@ class DeliveryForm(forms.ModelForm):
         model =Delivery
         fields=("direccion","telefono","referencia","comentario")
 
+class frmCrearCuenta(UserCreationForm):
+    class Meta:
+        model=User
+        fields=["username","first_name", "last_name","email", "password1","password2"]
 class AgregarPedido(forms.ModelForm):
     class Meta:
         model=Pedido

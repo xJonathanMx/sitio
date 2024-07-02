@@ -2,6 +2,7 @@ aplicacion/__pycache__
 aplicacion/migrations/__pycache__/
 ../sitio/sitio/__pycache__/
 sitio/__pycache__/
+db.sqlite3
 
 
 
