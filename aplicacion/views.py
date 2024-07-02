@@ -9,6 +9,7 @@ from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoF
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django.contrib.auth.views import PasswordResetView
 
 
 
@@ -241,3 +242,6 @@ def detalle(request,id):
         "producto":producto
     }
     return render(request,'aplicacion/detalle.html',datos)  
+
+def Constraseña_Olvidada(request):
+    return render(request,'aplicacion/reset_password.html')

@@ -89,5 +89,11 @@ class RegistroUsuarioForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Registrar'))
 
+class  ResetPasswordForm(forms.Form):
+    username=forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder':'ingrese un username',
+        'class':'form-control',
+        'autocomplete':'off'
+    }))
 
 
