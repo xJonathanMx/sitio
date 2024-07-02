@@ -50,12 +50,21 @@
                 
                 <tbody>
                     {% if user.is_authenticated %}
-                    {% for pedido in pedidos %}
+                    {% for p in pedido %}
                         <tr>
-                            <td>{{ pedido.Cantidad }}</td>
-                            <td>{{ pedido.fecha_pedido }}</td>
-                            <td>{{ pedido.precio_total }}</td>
-                            <td><div class="Estado_env">{{pedido.estado}}</div></td>
+                            <td>{{p.Cantidad.producto}}</td>
+                            <td>{{ p.fecha_pedido }}</td>
+                            <td>{{ p.precio_total }}</td>
+                            <td>
+                            {% if p.estado == 'ENVIADO' %}
+                                <div class="Estado_env">{{p.estado}}</div>
+                            {% elif p.estado == 'PENDIENTE' %}
+                                <div class="Estado_Pend">{{p.estado}}</div>
+                            {% elif p.estado == 'CANCELADO' %}
+                                <div class="Estado_Cance">{{p.estado}}</div>
+                            {% elif p.estado == 'ENTREGADO' %}
+                                <div class="Estado_Entr">{{p.estado}}</div>
+                            {% endif %}
                             <td>
                                 <button class="btn btn-primary">Ver Detalle</button>
                             </td>                        

@@ -35,12 +35,7 @@ def carta(request):
 
 
 
-def pedidos(request):
-    pedidos = Pedido.objects.filter(usuario=request.user)
-    datos={
-        'pedidos' : pedidos
-    }
-    return render(request,'aplicacion/pedidos.html',datos)
+
 
 def pagar(request):
     return render(request,'aplicacion/pagar.html')
@@ -84,6 +79,19 @@ class CustomLoginView(LoginView):
 
 def login(request):
     return render (request,'aplicacion/login.html')
+
+def pedidos(request):
+    pedido=Pedido.objects.all()
+    delivery=Delivery.objects.all()
+    cantidad=CantidadProducto.objects.all()
+    producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
+    datos={
+        'pedido':pedido,
+        'delivery':delivery,
+        'cantidad':cantidad,
+        'producto':producto
+    }
+    return render(request,'aplicacion/pedidos.html',datos)
 
 def tabla_pedidos(request):
     pedido=Pedido.objects.all()
