@@ -8,12 +8,13 @@ from django.shortcuts import get_object_or_404
 from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm, frmCrearCuenta,AgregarPedido
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.http import JsonResponse
+from django.http import HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone  
+from .tipo import *
 
 
 
@@ -85,8 +86,29 @@ def login(request):
     return render (request,'aplicacion/login.html')
 
 def tabla_pedidos(request):
-    return render(request,'aplicacion/tabla_pedidos.html')
+    pedido=Pedido.objects.all()
+    delivery=Delivery.objects.all()
+    cantidad=CantidadProducto.objects.all()
+    producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
+    datos={
+        'pedido':pedido,
+        'delivery':delivery,
+        'cantidad':cantidad,
+        'producto':producto
+    }
+    return render(request,'aplicacion/tabla_pedidos.html',datos)
 
+def cambiar_estado(request,id):
+    if request.method == 'POST':
+        pedido = get_object_or_404(Pedido, id_pedido=id)
+        nuevo_estado = request.POST.get('nuevo_estado')
+        if nuevo_estado in dict(ESTADO_PRODUCTO):
+            pedido.estado = nuevo_estado
+            pedido.save()
+            return redirect('tabla_pedidos')
+        else:
+            return redirect('tabla_pedidos')
+    return redirect('tabla_pedidos')
 
 #funcionalidad carrito
 
@@ -320,7 +342,7 @@ def crear_pedido(request):
             telefono=delivery_data['telefono'],
             referencia=delivery_data.get('referencia', ''),
             comentario=delivery_data.get('comentario', ''),
-            propietario=usuario.perfil  # Asegúrate de que esto esté correcto según tu modelo Usuario
+            propietario=usuario.perfil 
         )
 
         for item in lista_productos_carrito:
