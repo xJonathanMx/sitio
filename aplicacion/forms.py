@@ -25,6 +25,11 @@ class DeliveryForm(forms.ModelForm):
         model =Delivery
         fields=("direccion","telefono","referencia","comentario")
 
+class AgregarPedido(forms.ModelForm):
+    class Meta:
+        model=Pedido
+        fields=("precio_total","fecha_pedido","estado")#"nombre_producto","precio",,"cantidad"       
+
 
 class RegistroUsuarioForm(forms.ModelForm):
 
