@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404
 from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm, frmCrearCuenta,AgregarPedido
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.http import HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -97,7 +96,7 @@ def tabla_pedidos(request):
     pedido=Pedido.objects.all()
     delivery=Delivery.objects.all()
     cantidad=CantidadProducto.objects.all()
-    producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
+    producto=Producto.objects.all()
     datos={
         'pedido':pedido,
         'delivery':delivery,

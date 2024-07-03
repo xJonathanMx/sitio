@@ -58,7 +58,7 @@
                                 <td>{{p.delivery.telefono}}</td>
                         <td>{{p.delivery.direccion}}</td>
                         <td>
-                            {% if p.estado == 'ENVIADO' %}
+                        {% if p.estado == 'ENVIADO' %}
                             <div class="Estado_env">{{p.estado}}</div>
                         {% elif p.estado == 'PENDIENTE' %}
                             <div class="Estado_Pend">{{p.estado}}</div>
