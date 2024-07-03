@@ -54,7 +54,7 @@
                     {% for p in pedido %}
                         <tr>
                             <td>{{p.Cantidad.producto }}</td>
-                            <td>{{ pedido.Cantidad.cant_producto.producto}}</td>
+                            <td>{{ p.Cantidad.cant_producto}}</td>
                             <td>{{ p.fecha_pedido }}</td>
                             <td>{{ p.precio_total }}</td>
                             <td>

@@ -353,6 +353,7 @@ def crear_pedido(request):
             messages.error(request, "Debe proporcionar los datos de entrega antes de pagar.")
             return redirect('carrito')
 
+        # Crear el objeto Delivery
         delivery = Delivery.objects.create(
             direccion=delivery_data['direccion'],
             telefono=delivery_data['telefono'],
@@ -366,25 +367,30 @@ def crear_pedido(request):
             cantidad = item['cantidad']
             precio_total = producto.valor * cantidad
 
+            # Crear el objeto CantidadProducto
             cantidad_producto = CantidadProducto.objects.create(
                 cant_producto=cantidad,
                 producto=producto
             )
 
+            # Crear el objeto Pedido y asignar el objeto Delivery
             pedido = Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
                 estado='Pendiente',
                 usuario=usuario,
-                Cantidad=cantidad_producto  # Asigna el objeto CantidadProducto creado
+                Cantidad=cantidad_producto,
+                delivery=delivery  # Asigna el objeto Delivery creado
             )
 
+            # Crear el objeto Comanda
             Comanda.objects.create(
                 fecha_emision=timezone.now(),
                 pedido=pedido,
                 direccion=delivery
             )
 
+        # Limpiar el carrito y los datos de entrega en la sesión
         request.session['carrito'] = []
         request.session['delivery_data'] = None
 
