@@ -93,7 +93,7 @@ class CustomLoginView(LoginView):
         
         # Redirigir según el tipo de usuario
         if user.is_staff:
-            return redirect('admins')
+            return redirect('index')
         else:
             messages.success(self.request, f'Bienvenido {user.username}')
             return redirect('index')

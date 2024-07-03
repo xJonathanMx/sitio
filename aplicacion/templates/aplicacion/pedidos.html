@@ -25,6 +25,9 @@
                 <li><a href="{% url 'carrito' %}">Carrito</a></li>
                 {% if user.is_authenticated %}
                 <li> {{ user.username }}</li>
+                {% if user.is_staff %}
+                    <li><a href="{% url "admins"%}">Admin</a></li>
+                {% endif %}
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
