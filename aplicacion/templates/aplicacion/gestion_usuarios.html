@@ -33,77 +33,31 @@
   </nav>
 
   <div class="container mt-5">
-    <h2 class="p-5">Gestion de usuarios</h2>
+    <h2 class="p-5">Gestión de usuarios</h2>
     <table class="table table-hover table-responsive">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Telefono</th>
-          <th>Direccion</th>
-          <th>Operacion</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>seba</td>
-          <td>Morales</td>
-          <td>912345678</td>
-          <td>Su casa 123</td>
-          <td><button data-bs-toggle="modal" data-bs-target="#modal_user" type="button" class="btn btn-primary me-2"><i
-                class="bi bi-bag-check"></i></button>
-            <button type="button" class="btn btn-danger"><i class="bi bi-bag-dash"></i></button>
-          </td>
-          <div>
-            <div class="modal fade" id="modal_user">
-              <div class="modal-dialog">
-                <div class="modal-content">
-
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h4 class="modal-title">Editar Usuario</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                  </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
-                      <div class="mb-3">
-                        <label for="" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" value="Seba"  placeholder="Nombre Usuario">
-                        <div>
-                          <label for="" class="form-label">Apellido</label>
-                          <input type="text" class="form-control" name=""Apellido id="" value="Morales" placeholder="Apellido Usuario">
-                        </div>
-                        <div>
-                          <label for="" class="form-label">Telefono</label>
-                          <input type="text" class="form-control" value="912345678" placeholder="Telefono Usuario">
-                        </div>
-                        <div>
-                          <label for="" class="form-label">Direccion</label>
-                          <input  type="text" name="" id="" class="form-control" value="Por allá 123" placeholder="Direccion Usuario">
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </tr>
-       
-      </tbody>
+        <thead>
+            <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for detalle in detalles_entrega %}
+          <tr>
+              <td>{{ detalle.usuario.rut }}</td>
+              <td>{{ detalle.usuario.usuario.first_name }}</td>
+              <td>{{ detalle.usuario.usuario.last_name }}</td>
+              <td>{{ detalle.entregas.0.telefono }}</td> <!-- Mostrar el primer telefono asociado -->
+              <td>{{ detalle.entregas.0.direccion }}</td> <!-- Mostrar la primera direccion asociada -->
+          </tr>
+      {% endfor %}
+        </tbody>
     </table>
-  </div>
+</div>
 
   <script src="{% static "../static/js/index.js" %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

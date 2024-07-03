@@ -162,7 +162,7 @@ def carrito(request):
                 break
 
     total = sum(item['subtotal'] for item in productos_carrito)
-   
+
     context = {
         'productos_carrito': productos_carrito,
         'total': total,
@@ -235,13 +235,24 @@ def admin(request):
 
 
 def gestion_usuario(request):
-    usuarios=Usuario.objects.all()
-        
+    # Obtener todos los usuarios y sus entregas asociadas
+    usuarios = Usuario.objects.all()
+
+    # Crear una lista para almacenar los detalles de entrega de cada usuario
+    detalles_entrega = []
+    for usuario in usuarios:
+        # Obtener las entregas asociadas a cada usuario
+        entregas_usuario = Delivery.objects.filter(propietario=usuario)
+        detalles_entrega.append({
+            'usuario': usuario,
+            'entregas': entregas_usuario,
+        })
+
     datos = {
-        "usuario": usuarios,
-        
+        "detalles_entrega": detalles_entrega,
     }
-    return render(request,'aplicacion/gestion_usuarios.html',datos)
+    
+    return render(request, 'aplicacion/gestion_usuarios.html', datos)
 
 
 def Carta_admin(request):
