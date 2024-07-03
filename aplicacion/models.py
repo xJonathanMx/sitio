@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .tipo import *
 
 # Create your models here.
 
@@ -27,9 +28,10 @@ class Pedido(models.Model):
     #precio = models.DecimalField(max_digits=10, decimal_places=2)
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pedido = models.DateField()
-    estado = models.CharField(max_length=50)
+    estado = models.CharField(max_length=50,choices=ESTADO_PRODUCTO)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
+    delivery = models.ForeignKey('Delivery', on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.usuario}-{self.Cantidad}"
     
@@ -41,7 +43,7 @@ class Delivery(models.Model):
     comentario=models.CharField(max_length=150, null=True)
     propietario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     def __str__(self):
-        return self.direccion + "-" + self.referencia
+        return f"{self.direccion}-{self.referencia}-{self.telefono}"
 class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
     #nomb_comanda = models.CharField(max_length=100)

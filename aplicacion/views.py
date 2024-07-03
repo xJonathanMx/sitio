@@ -8,12 +8,12 @@ from django.shortcuts import get_object_or_404
 from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm, frmCrearCuenta,AgregarPedido
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.http import JsonResponse
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone  
+from .tipo import *
 
 
 
@@ -88,9 +88,43 @@ class CustomLoginView(LoginView):
 def login(request):
     return render (request,'aplicacion/login.html')
 
-def tabla_pedidos(request):
-    return render(request,'aplicacion/tabla_pedidos.html')
+def pedidos(request):
+    pedido=Pedido.objects.all()
+    delivery=Delivery.objects.all()
+    cantidad=CantidadProducto.objects.all()
+    producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
+    datos={
+        'pedido':pedido,
+        'delivery':delivery,
+        'cantidad':cantidad,
+        'producto':producto
+    }
+    return render(request,'aplicacion/pedidos.html',datos)
 
+def tabla_pedidos(request):
+    pedido=Pedido.objects.all()
+    delivery=Delivery.objects.all()
+    cantidad=CantidadProducto.objects.all()
+    producto=Producto.objects.all()
+    datos={
+        'pedido':pedido,
+        'delivery':delivery,
+        'cantidad':cantidad,
+        'producto':producto
+    }
+    return render(request,'aplicacion/tabla_pedidos.html',datos)
+
+def cambiar_estado(request,id):
+    if request.method == 'POST':
+        pedido = get_object_or_404(Pedido, id_pedido=id)
+        nuevo_estado = request.POST.get('nuevo_estado')
+        if nuevo_estado in dict(ESTADO_PRODUCTO):
+            pedido.estado = nuevo_estado
+            pedido.save()
+            return redirect('tabla_pedidos')
+        else:
+            return redirect('tabla_pedidos')
+    return redirect('tabla_pedidos')
 
 #funcionalidad carrito
 
@@ -187,18 +221,13 @@ def Delivery_Guardar(request):
     
 
 def admin(request):
-    # Obtener todas las comandas activas ordenadas por fecha de emisión
-    comandas_activas = Comanda.objects.filter(terminada=False).order_by('fecha_emision')
-
-    # Obtener todos los objetos de Delivery y CantidadProducto
-    delivery = Delivery.objects.all()
-    cant_prod = CantidadProducto.objects.all()
-
-    # Crear un diccionario con los datos para enviar al template
-    datos = {
-        "delivery": delivery,
-        "comandas": comandas_activas,  # Usar solo las comandas activas
-        "cant_prod": cant_prod,
+    delivery=Delivery.objects.all()
+    comanda=Comanda.objects.all()
+    cant_prod=CantidadProducto.objects.all()
+    datos={
+        "delivery":delivery,
+        "cant_prod":cant_prod,
+        "comanda":comanda,
     }
     
     # Renderizar el template 'admin_usuario.html' con los datos
@@ -329,7 +358,7 @@ def crear_pedido(request):
             telefono=delivery_data['telefono'],
             referencia=delivery_data.get('referencia', ''),
             comentario=delivery_data.get('comentario', ''),
-            propietario=usuario.perfil  # Asegúrate de que esto esté correcto según tu modelo Usuario
+            propietario=usuario.perfil 
         )
 
         for item in lista_productos_carrito:
