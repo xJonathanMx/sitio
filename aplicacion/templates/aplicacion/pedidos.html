@@ -58,6 +58,7 @@
                         <tr>
                             <td>{{p.Cantidad.producto }}</td>
                             <td>{{ p.Cantidad.cant_producto}}</td>
+                            <td>{{p.Cantidad.cant_producto}}</td>
                             <td>{{ p.fecha_pedido }}</td>
                             <td>{{ p.precio_total }}</td>
                             <td>
@@ -65,15 +66,56 @@
                                 <div class="Estado_env">{{p.estado}}</div>
                             {% elif p.estado == 'PENDIENTE' %}
                                 <div class="Estado_Pend">{{p.estado}}</div>
+                            {% elif p.estado == 'PREPARACION' %}
+                                <div class="Estado_Entr">{{p.estado}}</div>
                             {% elif p.estado == 'CANCELADO' %}
                                 <div class="Estado_Cance">{{p.estado}}</div>
                             {% elif p.estado == 'ENTREGADO' %}
                                 <div class="Estado_Entr">{{p.estado}}</div>
                             {% endif %}
                             <td>
-                                <button class="btn btn-primary">Ver Detalle</button>
+                                <a class="btn btn-primary"
+                                type="button"
+                                class="btn btn-primary m-4 mb-3"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop1-{{ p.id_pedido }}" >Ver Detalle</a>
                             </td>                        
                         </tr>
+                        <div class="modal fade" id="staticBackdrop1-{{ p.id_pedido }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel-{{ p.id_pedido }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLabel">
+                                    Detalle
+                                  </h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  <h3>Pedido</h3>
+                                  <p>Producto: {{ p.Cantidad }}</p>
+                                  <p>fecha: {{p.fecha_pedido}}</p>
+                                  <p>Valor Total: {{p.precio_total}}</p>
+                                    
+                                    <div class="mb-3">
+                                    </div>
+                                    <div class="modal-footer">
+                                  
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Cerrar
+                                      </button>
+                                    </div>
+                                 
+                                  
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
                     {% endfor %}
                     {% endif %}
                 </tbody>
@@ -82,6 +124,7 @@
         </div>
 
     </div>
+    
     <script src="{% static "../static/js/index.js" %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

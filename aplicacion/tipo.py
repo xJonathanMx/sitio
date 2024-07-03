@@ -2,5 +2,6 @@ ESTADO_PRODUCTO={
     ('ENTREGADO','Entregado'),
     ('PENDIENTE','Pendiente'),
     ('CANCELADO','Cancelado'),
-    ('ENVIADO','Enviado')
+    ('ENVIADO','Enviado'),
+    ('PREPARACION','Preparacion')
 }

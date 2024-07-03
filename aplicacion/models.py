@@ -29,7 +29,7 @@ class Pedido(models.Model):
     #precio = models.DecimalField(max_digits=10, decimal_places=2)
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pedido = models.DateField()
-    estado = models.CharField(max_length=50,choices=ESTADO_PRODUCTO)
+    estado = models.CharField(max_length=50,choices=ESTADO_PRODUCTO,default='PENDIENTE')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
     delivery = models.ForeignKey('Delivery', on_delete=models.CASCADE)
