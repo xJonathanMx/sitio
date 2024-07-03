@@ -78,7 +78,20 @@ class CustomLoginView(LoginView):
 
     def form_valid(self, form):
         user = form.get_user()
+        
+        # Verificar si el usuario está bloqueado
+        try:
+            usuario = Usuario.objects.get(usuario=user)
+            if usuario.bloqueado:
+                # Mostrar un mensaje de cuenta bloqueada
+                messages.error(self.request, 'Tu cuenta está temporalmente bloqueada. Contacta al administrador.')
+                return redirect('login')  # Redirigir nuevamente al formulario de login
+        except Usuario.DoesNotExist:
+            messages.error(self.request, 'No hay cuenta asosciada a estas credenciales')
+
         auth_login(self.request, user)
+        
+        # Redirigir según el tipo de usuario
         if user.is_staff:
             return redirect('admins')
         else:
@@ -418,3 +431,17 @@ def terminar_comanda(request, comanda_id):
     
     # Redirige de vuelta a la página de administración
     return redirect('admins')
+
+
+
+def bloquear_usuario(request, rut):
+    usuario = Usuario.objects.get(rut=rut)
+
+    if usuario.bloqueado:
+        usuario.bloqueado = False
+    else:
+        usuario.bloqueado = True
+
+    usuario.save()  
+
+    return redirect('Usuarios')

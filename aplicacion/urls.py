@@ -4,7 +4,9 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,admin_Carta_M,admin_Carta_E, CustomLoginView, user_profile, custom_logout,Delivery_Guardar, crear_pedido, terminar_comanda,cambiar_estado
+from .views import (index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, 
+        login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,admin_Carta_M,admin_Carta_E, 
+        CustomLoginView, user_profile, custom_logout,Delivery_Guardar, crear_pedido, terminar_comanda,cambiar_estado, bloquear_usuario)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -34,6 +36,7 @@ urlpatterns = [
     path('delivery_guardar/', Delivery_Guardar, name='delivery_guardar'),
     path('crear_pedido/', crear_pedido, name='crear_pedido'),
     path('terminar_comanda/<int:comanda_id>/', terminar_comanda, name='terminar_comanda'),
+    path('usuarios/bloquear/<str:rut>/', bloquear_usuario, name='bloquear_usuario'),
     
 ]
 if settings.DEBUG:

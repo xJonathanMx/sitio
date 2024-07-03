@@ -31,19 +31,45 @@
                 {% load crispy_forms_tags %}
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p}}
+                    {{ form | crispy}}
                     <div class="mb-3">
                         <a href="{% url 'registro_usuario' %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
                         <br>
                         <button type="submit" class="btn btn-primary btn rounded shadow text-light">Iniciar sesión</button>
                     </div>
                 </form>
+                {% if messages %}
+                    <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-center" role="alert">
+                        <ul>
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
+    
     </div>
     </div>
     <script src="{% static "../static/js/login.js" %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let alerta = document.querySelector('.alert');
+            if (alerta) {
+                setTimeout(function() {
+                alerta.classList.add('fade');
+                setTimeout(function() {
+                    alerta.parentNode.removeChild(alerta);
+                }, 1000); // Duración de la animación de desvanecimiento de Bootstrap (0.5 segundos)
+            }, 3000); // Tiempo en milisegundos (3 segundos)
+          }
+        });
+  
+    
+      </script>
 </body>
 
 </html>

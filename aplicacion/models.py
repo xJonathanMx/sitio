@@ -11,6 +11,7 @@ class Usuario(models.Model):
     usuario=models.OneToOneField(User, unique=True, related_name='perfil', on_delete=models.CASCADE)
 
     rut = models.CharField(max_length=12, primary_key=True)
+    bloqueado = models.BooleanField(default=False)  
 
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True)

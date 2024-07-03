@@ -53,9 +53,20 @@
               <td>{{ detalle.usuario.usuario.last_name }}</td>
               <td>{{ detalle.entregas.0.telefono }}</td> <!-- Mostrar el primer telefono asociado -->
               <td>{{ detalle.entregas.0.direccion }}</td> <!-- Mostrar la primera direccion asociada -->
+              <td>
+                  {% if detalle.usuario.bloqueado %}
+                      <a href="{% url 'bloquear_usuario' detalle.usuario.rut %}" class="btn btn-primary me-2">
+                          Desbloquear
+                      </a>
+                  {% else %}
+                      <a href="{% url 'bloquear_usuario' detalle.usuario.rut %}" class="btn btn-danger">
+                          Bloquear
+                      </a>
+                  {% endif %}
+              </td>
           </tr>
-      {% endfor %}
-        </tbody>
+          {% endfor %}
+      </tbody>
     </table>
 </div>
 
