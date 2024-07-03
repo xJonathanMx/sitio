@@ -234,13 +234,15 @@ def Delivery_Guardar(request):
     
 
 def admin(request):
-    delivery=Delivery.objects.all()
-    comanda=Comanda.objects.all()
-    cant_prod=CantidadProducto.objects.all()
-    datos={
-        "delivery":delivery,
-        "cant_prod":cant_prod,
-        "comanda":comanda,
+    # Obtener todas las entregas, comandas y cantidades de productos
+    delivery = Delivery.objects.all()
+    comandas = Comanda.objects.filter(terminada=False)  # Filtrar comandas no terminadas
+    cant_prod = CantidadProducto.objects.all()
+    
+    datos = {
+        "delivery": delivery,
+        "cant_prod": cant_prod,
+        "comanda": comandas,
     }
     
     # Renderizar el template 'admin_usuario.html' con los datos
