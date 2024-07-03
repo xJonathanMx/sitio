@@ -18,6 +18,7 @@ urlpatterns = [
     path("delivery/", Delivery_Guardar, name="delivery"),
     path('tabla_pedidos/', tabla_pedidos, name='tabla_pedidos'),
     path("cambiar_estado/<id>", cambiar_estado, name="cambiar_estado"),
+
     path('registro/', registro_usuario, name='registro_usuario'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('admins/', admin, name='admins'),

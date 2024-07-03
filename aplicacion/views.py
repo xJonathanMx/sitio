@@ -92,6 +92,8 @@ def pedidos(request):
     }
     return render(request,'aplicacion/pedidos.html',datos)
 
+
+
 def tabla_pedidos(request):
     pedido=Pedido.objects.all()
     delivery=Delivery.objects.all()
