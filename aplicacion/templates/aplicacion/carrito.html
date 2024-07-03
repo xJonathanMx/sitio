@@ -45,7 +45,7 @@
                 <li><a href="{% url "pedidos" %}">Mis Pedidos</a></li>
                 <li class="active"><a href="{% url "carrito" %}">Carrito</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'user_profile' %}">Perfil de {{ user.username }}</a></li>
+                <li> {{ user.username }}</li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
@@ -189,6 +189,7 @@
       <a href="#" id="pagar-link">Pagar</a>
       <form id="pagar-form" action="{% url 'crear_pedido' %}" method="post" style="display: none;">
           {% csrf_token %}
+          
       </form>
     </div>
     <script>

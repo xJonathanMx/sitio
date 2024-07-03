@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="{% url "admins" %}">Admin </a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'user_profile' %}">Perfil de {{ user.username }}</a></li>
+                <li> {{ user.username }}</li>
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
