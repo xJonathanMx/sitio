@@ -165,6 +165,7 @@ def carrito(request):
     formulario=DeliveryForm()
     productos = Producto.objects.filter(id_producto__in=[item['id_producto'] for item in lista_productos_carrito])
     productos_carrito = []
+    
 
     for producto in productos:
         for item in lista_productos_carrito:

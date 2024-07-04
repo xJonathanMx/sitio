@@ -46,7 +46,9 @@
                 <li class="active"><a href="{% url "carrito" %}">Carrito</a></li>
                 {% if user.is_authenticated %}
                 <li> {{ user.username }}</li>
-                <li><a href="{% url "admins"%}">Admin</a></li>
+                {% if user.is_staff %}
+                  <li><a href="{% url "admins"%}">Admin</a></li>
+                {% endif %}
                     <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
@@ -111,7 +113,7 @@
 
       <div class="contenedor-datos">
         <div class="datos-personales">
-          <h2 class="nombre-usuario">{{user.username}}</h2>
+          <h2 class="nombre-usuario">{{user.first_name}} {{user.last_name}}</h2>
           <p class="correo">{{user.email}}</p>
         </div>
 
