@@ -19,7 +19,7 @@ class ProductoForm(forms.ModelForm):
 class UpdProductoForm(forms.ModelForm):
     class Meta:
         model =Producto
-        fields= ("nom_producto", "descripcion", "valor", "imagen")
+        fields= ("nom_producto", 'stock',"descripcion", "valor", "imagen")
 class DeliveryForm(forms.ModelForm):
     class Meta:
         model =Delivery
@@ -46,11 +46,11 @@ class RegistroUsuarioForm(forms.ModelForm):
         rut = self.cleaned_data.get('rut')
 
         def validar_rut(rut):
-            rut = rut.replace(".", "").replace("-", "").upper()  # Elimina puntos y guiones y convierte a mayúsculas
-            rut, verificador = rut[:-1], rut[-1]  # Separa el número del verificador
+            rut = rut.replace(".", "").replace("-", "").upper()  
+            rut, verificador = rut[:-1], rut[-1]  
 
             if not rut.isdigit() or len(rut) < 7:
-                return False  # El RUT debe contener al menos 7 dígitos
+                return False  
 
             suma = sum(int(digit) * int(factor) for digit, factor in zip(reversed(rut), cycle(range(2, 8))))
             dv_esperado = (-suma) % 11

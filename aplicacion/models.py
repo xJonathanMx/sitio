@@ -18,7 +18,10 @@ class Producto(models.Model):
     nom_producto = models.CharField(max_length=100)
     descripcion = models.TextField()
     valor = models.DecimalField(max_digits=10, decimal_places=2)
-    imagen=models.ImageField(upload_to='producto/',null=True)
+    imagen=models.ImageField(upload_to='producto/',null=False)
+    habilitado = models.BooleanField(default=True)
+    stock=models.IntegerField(default=0,null=False)
+
 
     def __str__(self):
         return self.nom_producto
@@ -29,7 +32,7 @@ class Pedido(models.Model):
     #precio = models.DecimalField(max_digits=10, decimal_places=2)
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_pedido = models.DateField()
-    estado = models.CharField(max_length=50,choices=ESTADO_PRODUCTO,default='PENDIENTE')
+    estado = models.CharField(max_length=50,choices=ESTADO_PRODUCTO,default='PREPARACION')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
     delivery = models.ForeignKey('Delivery', on_delete=models.CASCADE)

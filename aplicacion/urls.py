@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from django.urls import path
 from .views import (index, carta, pedidos, pagar, carrito, tabla_pedidos, registro_usuario, 
         login, admin, detalle, gestion_usuario, Carta_admin, agregar_al_carrito, eliminar_del_carrito,Agregar_Producto,admin_Carta_M,admin_Carta_E, 
-        CustomLoginView, user_profile, custom_logout,Delivery_Guardar, crear_pedido, terminar_comanda,cambiar_estado, bloquear_usuario)
+        CustomLoginView, user_profile, custom_logout,Delivery_Guardar, crear_pedido, terminar_comanda,cambiar_estado, bloquear_usuario,cambiar_estado_producto,terminar_pedido)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -20,7 +20,7 @@ urlpatterns = [
     path("delivery/", Delivery_Guardar, name="delivery"),
     path('tabla_pedidos/', tabla_pedidos, name='tabla_pedidos'),
     path("cambiar_estado/<id>", cambiar_estado, name="cambiar_estado"),
-
+    path("terminar_pedido<id_pedido>",terminar_pedido,name='terminar_pedido'),
     path('registro/', registro_usuario, name='registro_usuario'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('admins/', admin, name='admins'),
@@ -30,13 +30,14 @@ urlpatterns = [
     path("EditarProducto/<id>", admin_Carta_M, name="DetalleAdmin"),
     path("EliminarProducto/<id>", admin_Carta_E, name="Eliminar_Producto"),
     path('agregar-producto/', Agregar_Producto, name='Agregar_Producto'),
+    path('cambiarproducto<id>',cambiar_estado_producto, name="cambiar_estado_producto"),
     path('agregar_al_carrito/<int:id_producto>/', agregar_al_carrito, name='agregar_al_carrito'),
     path('eliminar_del_carrito/<int:id_producto>/', eliminar_del_carrito, name='eliminar_del_carrito'),
     path('profile/', user_profile, name='user_profile'),
     path('logout/', custom_logout, name='logout'),
     path('delivery_guardar/', Delivery_Guardar, name='delivery_guardar'),
     path('crear_pedido/', crear_pedido, name='crear_pedido'),
-    path('terminar_comanda/<int:comanda_id>/', terminar_comanda, name='terminar_comanda'),
+    path('terminar_comanda/<id>/', terminar_comanda, name='terminar_comanda'),
     path('usuarios/bloquear/<str:rut>/', bloquear_usuario, name='bloquear_usuario'),
     
 ]

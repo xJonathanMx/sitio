@@ -104,7 +104,9 @@
                     <th>Imagen</th>
                     <th>Producto</th>
                     <th>Precio</th>
+                    <th>Stock</th>
                     <th>Operacion</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -115,10 +117,24 @@
                     <td><img src="{{ p.imagen.url }}" alt="" class="img-tabla-producto"></td>
                     <td>{{p.nom_producto}}</td>
                     <td>{{p.valor}}</td>
+                    <td>{{p.stock}}
+                    </td>
                     <td>
                       <a href="{% url 'DetalleAdmin' p.id_producto %}"  role="button" class="btn btn-primary">Ver Detalle</a>
-                      <a href="{% url "Eliminar_Producto" p.id_producto%}"  class="btn btn-danger mx-1" ><i class="bi bi-trash3-fill"></i></a></td>
-                    
+                      
+                      
+
+                      {% if p.habilitado %}
+                      <a href="{% url 'cambiar_estado_producto' p.id_producto %}" class="btn btn-success">Habilitado</a>
+                      
+          
+                      
+                      {% else %}
+                      <a href="{% url 'cambiar_estado_producto' p.id_producto %}" class="btn btn-warning" >Desabilitado</a>
+                      {% endif %} 
+                      <a href="{% url "Eliminar_Producto" p.id_producto%}"  class="btn btn-danger mx-1" ><i class="bi bi-trash3-fill"></i></a>
+                    </td>
+                      
                   </tr>
                   {% endfor %}
                 
