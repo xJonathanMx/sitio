@@ -1,6 +1,6 @@
 aplicacion/__pycache__
 aplicacion/migrations/__pycache__/
-../sitio/sitio/__pycache__/
+../sitio/__pycache__/
 sitio/__pycache__/
 
 
@@ -181,3 +181,8 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 db.sqlite3
+sitio/__pycache__/__init__.cpython-311.pyc
+sitio/__pycache__/__init__.cpython-311.pyc
+sitio/__pycache__/urls.cpython-311.pyc
+sitio/__pycache__/wsgi.cpython-311.pyc
+sitio/__pycache__/settings.cpython-311.pyc
