@@ -46,6 +46,7 @@
                         <th>Cantidad</th>
                         <th>Fecha</th>
                         <th>Total</th>
+                        <th>Comentario</th>
                         <th>Estado</th>
                         <th>Operacion</th>
                         <th></th>
@@ -61,6 +62,7 @@
                             <td>{{ p.Cantidad.cant_producto}}</td>
                             <td>{{ p.fecha_pedido }}</td>
                             <td>{{ p.precio_total }}</td>
+                            <td>{{ p.delivery.comentario }}</td>
                             <td>
                             {% if p.estado == 'ENVIADO' %}
                                 <div class="Estado_env">{{p.estado}}</div>

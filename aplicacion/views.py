@@ -411,7 +411,7 @@ def crear_pedido(request):
             pedido = Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
-                estado='PENDIENTE',
+                estado='PREPARACION',
                 usuario=usuario,
                 Cantidad=cantidad_producto,
                 delivery=delivery  # Asigna el objeto Delivery creado
