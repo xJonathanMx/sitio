@@ -3,6 +3,7 @@ from os import remove, path
 from django.conf import settings
 from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
+from django.urls import reverse
 from .models import CantidadProducto, Comanda, Delivery, Pedido, Producto,Usuario
 from django.shortcuts import get_object_or_404
 from .forms import DeliveryForm, ProductoForm, RegistroUsuarioForm, UpdProductoForm,DeliveryForm, frmCrearCuenta,AgregarPedido
@@ -29,7 +30,7 @@ def index(request):
 
 def carta(request):
 
-    products = Producto.objects.all()
+    products = Producto.objects.filter(habilitado=True)
     return render(request,'aplicacion/carta.html', {'products':products})
 
 
@@ -177,7 +178,26 @@ def carrito(request):
     return render(request, 'aplicacion/carrito.html', context)
 
 
+def crear_pedido(request):
+    if request.method == "POST":
+        lista_productos_carrito = request.session.get('carrito', [])
+        usuario = request.user
 
+        for item in lista_productos_carrito:
+            producto = Producto.objects.get(id_producto=item['id_producto'])
+            cantidad = item['cantidad']
+            precio_total = producto.valor * cantidad
+
+            Pedido.objects.create(
+                precio_total=precio_total,
+                fecha_pedido=timezone.now(),
+                estado='PREPARACION',
+                cantidad=cantidad,
+                usuario=usuario
+            )
+
+        # Limpia el carrito después de crear el pedido
+        request.session['carrito'] = []
 
 def eliminar_del_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
@@ -222,6 +242,12 @@ def admin(request):
     # Renderizar el template 'admin_usuario.html' con los datos
     return render(request, 'aplicacion/admin_usuario.html', datos)
 
+def cambiar_estado_producto(request, id):
+    producto = get_object_or_404(Producto, id_producto=id)
+    producto.habilitado = not producto.habilitado
+    producto.save()
+    return redirect('AdminCarta')
+
 
 def gestion_usuario(request):
     # Obtener todos los usuarios y sus entregas asociadas
@@ -255,6 +281,11 @@ def Carta_admin(request):
 
     return render(request,'aplicacion/admin_carta_agregar.html',datos)
 
+def terminar_pedido(request, id):
+    pedido = get_object_or_404(Pedido, id_pedido=id)
+    pedido.estado = 'PENDIENTE'
+    pedido.save()
+    return redirect(reverse('admins'))
 
 def Agregar_Producto (request):
 
@@ -403,13 +434,14 @@ def crear_pedido(request):
     return redirect('carrito')
 
 
-def terminar_comanda(request, comanda_id):
-    comanda = get_object_or_404(Comanda, id_comanda=comanda_id)
+def terminar_comanda(request, id):
+    comanda = get_object_or_404(Comanda, id_comanda=id)
     comanda.terminada = True  # Marca la comanda como terminada
     comanda.save()
-    
-    # Redirige de vuelta a la página de administración
-    return redirect('admins')
+    pedido = comanda.pedido
+    pedido.estado = 'PENDIENTE'
+    pedido.save()
+    return redirect('admins')   
 
 
 
