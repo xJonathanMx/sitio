@@ -33,7 +33,7 @@ class frmCrearCuenta(UserCreationForm):
 class AgregarPedido(forms.ModelForm):
     class Meta:
         model=Pedido
-        fields=("precio_total","fecha_pedido","estado")#"nombre_producto","precio",,"cantidad"       
+        fields=("precio_total","estado")#"nombre_producto","precio",,"cantidad"       
 
 
 class RegistroUsuarioForm(forms.ModelForm):

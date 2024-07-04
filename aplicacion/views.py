@@ -34,16 +34,7 @@ def carta(request):
 
 
 
-def pedidos(request):
-    pedidos = Pedido.objects.filter(usuario=request.user)
-    cantidadProduct = CantidadProducto.objects.all()
-    producto = Producto.objects.all()
-    datos={
-        'producto' : producto,
-        'pedidos' : pedidos, 
-        'cantidadProductos' : cantidadProduct
-    }
-    return render(request,'aplicacion/pedidos.html',datos)
+
 
 def pagar(request):
     return render(request,'aplicacion/pagar.html')
@@ -101,9 +92,10 @@ class CustomLoginView(LoginView):
 def login(request):
     return render (request,'aplicacion/login.html')
 
+
 def pedidos(request):
     usuario = request.user
-    pedido=Pedido.objects.filter(usuario=usuario)
+    pedido=Pedido.objects.filter(usuario=usuario).order_by('-fecha_pedido').select_related('delivery', 'Cantidad__producto')
     delivery=Delivery.objects.all()
     cantidad=CantidadProducto.objects.all()
     producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
@@ -185,26 +177,7 @@ def carrito(request):
     return render(request, 'aplicacion/carrito.html', context)
 
 
-def crear_pedido(request):
-    if request.method == "POST":
-        lista_productos_carrito = request.session.get('carrito', [])
-        usuario = request.user
 
-        for item in lista_productos_carrito:
-            producto = Producto.objects.get(id_producto=item['id_producto'])
-            cantidad = item['cantidad']
-            precio_total = producto.valor * cantidad
-
-            Pedido.objects.create(
-                precio_total=precio_total,
-                fecha_pedido=timezone.now(),
-                estado='Pendiente', 
-                cantidad=cantidad,
-                usuario=usuario
-            )
-
-        # Limpia el carrito después de crear el pedido
-        request.session['carrito'] = []
 
 def eliminar_del_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
@@ -232,7 +205,7 @@ def Delivery_Guardar(request):
         else:
             messages.error(request,"Error al guardar tus datos")
             return redirect('carrito')
-    
+
 
 def admin(request):
     # Obtener todas las entregas, comandas y cantidades de productos
@@ -316,6 +289,7 @@ def admin_Carta_M (request,id):
     }
     return render(request,'aplicacion/admin_Carta_M.html',datos)
 
+
 def admin_Carta_E(request,id):
     producto=get_object_or_404(Producto,id_producto=id)
     if request.method=="POST":
@@ -329,7 +303,8 @@ def admin_Carta_E(request,id):
         'productos':producto
     }
     return render(request,'aplicacion/admin_Carta_E.html',datos)    
-    
+
+
 
 def detalle(request,id):
     producto=get_object_or_404(Producto,id_producto=id)
@@ -363,7 +338,8 @@ def Delivery_Guardar(request):
         else:
             messages.error(request, "Error al guardar los datos de entrega.")
             return redirect('carrito')
-        
+
+
 @login_required
 def crear_pedido(request):
     if request.method == "POST":
@@ -404,7 +380,7 @@ def crear_pedido(request):
             pedido = Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
-                estado='Pendiente',
+                estado='PENDIENTE',
                 usuario=usuario,
                 Cantidad=cantidad_producto,
                 delivery=delivery  # Asigna el objeto Delivery creado
