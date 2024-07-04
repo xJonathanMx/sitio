@@ -102,7 +102,8 @@ def login(request):
     return render (request,'aplicacion/login.html')
 
 def pedidos(request):
-    pedido=Pedido.objects.all()
+    usuario = request.user
+    pedido=Pedido.objects.filter(usuario=usuario)
     delivery=Delivery.objects.all()
     cantidad=CantidadProducto.objects.all()
     producto=Producto.objects.all() # Asegúrate de tener esta URL configurada
@@ -113,8 +114,6 @@ def pedidos(request):
         'producto':producto
     }
     return render(request,'aplicacion/pedidos.html',datos)
-
-
 
 def tabla_pedidos(request):
     pedido=Pedido.objects.all()
@@ -165,7 +164,6 @@ def carrito(request):
     formulario=DeliveryForm()
     productos = Producto.objects.filter(id_producto__in=[item['id_producto'] for item in lista_productos_carrito])
     productos_carrito = []
-    
 
     for producto in productos:
         for item in lista_productos_carrito:
@@ -200,7 +198,7 @@ def crear_pedido(request):
             Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
-                estado='PENDIENTE',
+                estado='Pendiente', 
                 cantidad=cantidad,
                 usuario=usuario
             )
@@ -406,6 +404,7 @@ def crear_pedido(request):
             pedido = Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
+                estado='Pendiente',
                 usuario=usuario,
                 Cantidad=cantidad_producto,
                 delivery=delivery  # Asigna el objeto Delivery creado

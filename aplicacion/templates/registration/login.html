@@ -32,10 +32,12 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form | crispy}}
-                    <div class="mb-3">
-                        <a href="{% url 'registro_usuario' %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
-                        <br>
+                    <div class="mb-3 d-flex justify-content-between">
+                        
+                        
                         <button type="submit" class="btn btn-primary btn rounded shadow text-light">Iniciar sesión</button>
+                        <br>
+                        <a href="{% url 'registro_usuario' %}" class="" style="font-size: 15px;">¿No tienes una cuenta?</a>
                     </div>
                 </form>
                 {% if messages %}
