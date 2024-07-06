@@ -22,6 +22,6 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('',include('aplicacion.urls')),
+    path('',include('aplicacion.urls')),    
 ] 
 

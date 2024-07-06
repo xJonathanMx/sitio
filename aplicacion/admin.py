@@ -1,16 +1,6 @@
 from django.contrib import admin
 from .models import  Delivery, Usuario, Producto, Pedido, Comanda, CantidadProducto
 
-# Register your models here.
-#para que salga como una lista en la base de datos
-#class adminMascota(admin.ModelAdmin):
-    #list_display=['id','nombre','edad','tipo','propietario']
-    #list_editable=['rut','nombre','apellido','f_nacto']
-
-##admin.site.register(Persona)
-
-
-
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ('rut',)

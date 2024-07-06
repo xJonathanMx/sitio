@@ -36,14 +36,14 @@ class Pedido(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     Cantidad = models.ForeignKey('CantidadProducto', on_delete=models.CASCADE)
     delivery = models.ForeignKey('Delivery', on_delete=models.CASCADE)
-    def __str__(self):
+    def __str__(self):  
         return f"{self.usuario}-{self.Cantidad}"
     
 class Delivery(models.Model):
     id_delivery=models.AutoField(primary_key=True)
     direccion=models.CharField(max_length=100,null=False)
     telefono= models.IntegerField(null=False)
-    referencia=models.CharField(max_length=100, null=True)
+    referencia=models.CharField(max_length=100, null=True)  
     comentario=models.CharField(max_length=150, null=True)
     propietario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     def __str__(self):

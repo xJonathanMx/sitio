@@ -181,7 +181,7 @@ def carrito(request):
 def crear_pedido(request):
     if request.method == "POST":
         lista_productos_carrito = request.session.get('carrito', [])
-        usuario = request.user
+        usuario = request.user  
 
         for item in lista_productos_carrito:
             producto = Producto.objects.get(id_producto=item['id_producto'])
