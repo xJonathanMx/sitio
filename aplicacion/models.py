@@ -50,8 +50,7 @@ class Delivery(models.Model):
         return f"{self.direccion}-{self.referencia}-{self.telefono}"
 class Comanda(models.Model):
     id_comanda = models.AutoField(primary_key=True)
-    #nomb_comanda = models.CharField(max_length=100)
-    #direccion = models.CharField(max_length=255)
+
     fecha_emision = models.DateTimeField(auto_now_add=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     direccion = models.ForeignKey (Delivery, on_delete=models.CASCADE)

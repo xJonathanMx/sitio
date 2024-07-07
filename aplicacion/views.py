@@ -20,7 +20,7 @@ from .tipo import *
 
 
 
-# Create your views here.
+
 
 
 
@@ -71,11 +71,10 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
         
-        # Verificar si el usuario está bloqueado
         try:
             usuario = Usuario.objects.get(usuario=user)
             if usuario.bloqueado:
-                # Mostrar un mensaje de cuenta bloqueada
+                
                 messages.error(self.request, 'Tu cuenta está temporalmente bloqueada. Contacta al administrador.')
                 return redirect('login')  # Redirigir nuevamente al formulario de login
         except Usuario.DoesNotExist:
@@ -83,7 +82,7 @@ class CustomLoginView(LoginView):
 
         auth_login(self.request, user)
         
-        # Redirigir según el tipo de usuario
+        
         if user.is_staff:
             return redirect('index')
         else:
@@ -133,7 +132,6 @@ def cambiar_estado(request,id):
             return redirect('tabla_pedidos')
     return redirect('tabla_pedidos')
 
-#funcionalidad carrito
 
 def agregar_al_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
@@ -188,15 +186,25 @@ def crear_pedido(request):
             cantidad = item['cantidad']
             precio_total = producto.valor * cantidad
 
-            Pedido.objects.create(
+            pedido= Pedido.objects.create(
                 precio_total=precio_total,
                 fecha_pedido=timezone.now(),
                 estado='PREPARACION',
                 cantidad=cantidad,
                 usuario=usuario
             )
+            for item in lista_productos_carrito:
+                producto = Producto.objects.get(id_producto=item['id_producto'])
+                CantidadProducto.objects.create(
+                    cant_producto=item['cantidad'],
+                    producto=producto,
+                    pedido=pedido
+                )
+                Comanda.objects.create(
+                pedido=pedido
+            )
 
-        # Limpia el carrito después de crear el pedido
+        
         request.session['carrito'] = []
 
 def eliminar_del_carrito(request, id_producto):
