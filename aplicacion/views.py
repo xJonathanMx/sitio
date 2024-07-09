@@ -106,7 +106,8 @@ def pedidos(request):
         'producto':producto
     }
     return render(request,'aplicacion/pedidos.html',datos)
-
+    
+@login_required
 def tabla_pedidos(request):
     pedido=Pedido.objects.all()
     delivery=Delivery.objects.all()
@@ -234,7 +235,7 @@ def Delivery_Guardar(request):
             messages.error(request,"Error al guardar tus datos")
             return redirect('carrito')
 
-
+@login_required
 def admin(request):
     # Obtener todas las entregas, comandas y cantidades de productos
     delivery = Delivery.objects.all()
@@ -256,7 +257,7 @@ def cambiar_estado_producto(request, id):
     producto.save()
     return redirect('AdminCarta')
 
-
+@login_required
 def gestion_usuario(request):
     # Obtener todos los usuarios y sus entregas asociadas
     usuarios = Usuario.objects.all()
@@ -277,7 +278,7 @@ def gestion_usuario(request):
     
     return render(request, 'aplicacion/gestion_usuarios.html', datos)
 
-
+@login_required
 def Carta_admin(request):
     producto=Producto.objects.all()
     formulario = ProductoForm()
@@ -289,12 +290,14 @@ def Carta_admin(request):
 
     return render(request,'aplicacion/admin_carta_agregar.html',datos)
 
+
 def terminar_pedido(request, id):
     pedido = get_object_or_404(Pedido, id_pedido=id)
     pedido.estado = 'PENDIENTE'
     pedido.save()
     return redirect(reverse('admins'))
 
+@login_required
 def Agregar_Producto (request):
 
     
@@ -310,7 +313,7 @@ def Agregar_Producto (request):
     
 
 
-
+@login_required
 def admin_Carta_M (request,id):
     producto=get_object_or_404(Producto,id_producto=id)
     formU=UpdProductoForm(instance=producto)
@@ -328,7 +331,7 @@ def admin_Carta_M (request,id):
     }
     return render(request,'aplicacion/admin_Carta_M.html',datos)
 
-
+@login_required
 def admin_Carta_E(request,id):
     producto=get_object_or_404(Producto,id_producto=id)
     if request.method=="POST":
@@ -441,7 +444,7 @@ def crear_pedido(request):
 
     return redirect('carrito')
 
-
+@login_required
 def terminar_comanda(request, id):
     comanda = get_object_or_404(Comanda, id_comanda=id)
     comanda.terminada = True  # Marca la comanda como terminada
@@ -452,7 +455,7 @@ def terminar_comanda(request, id):
     return redirect('admins')   
 
 
-
+@login_required
 def bloquear_usuario(request, rut):
     usuario = Usuario.objects.get(rut=rut)
 
